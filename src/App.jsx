@@ -9,49 +9,56 @@ const REGION_DATA = {
     color: '#3b82f6',
     image: 'https://images.unsplash.com/photo-1541432901042-2d8bd64b4a9b?auto=format&fit=crop&w=800&q=80',
     text: 'Marmara Bölgesi, Türkiye\'nin kuzeybatısında yer alan, tarihi yarımada ve doğal güzellikleri ile ünlü, sanayi ve kültürel açıdan en gelişmiş bölgesidir. İstanbul gibi metropolleri barındıran bölge, iki kıtayı birbirine bağlar.',
-    video: '/marmara nazar.mp4'
+    video: '/marmara nazar.mp4',
+    orientation: 'horizontal'
   },
   'ege': {
     name: 'Ege Bölgesi',
     color: '#10b981',
     image: 'https://images.unsplash.com/photo-1502095819777-62f79fb650fe?auto=format&fit=crop&w=800&q=80',
     text: 'Ege Bölgesi, zeytin ağaçları, muhteşem koyları ve antik kentleriyle Türkiye\'nin tatil cennetidir. Efes Antik Kenti ve travertenler gibi dünya mirası zenginliklerine sahiptir.',
-    video: '/ege pullu oya.mp4'
+    video: '/ege pullu oya.mp4',
+    orientation: 'vertical'
   },
   'akdeniz': {
     name: 'Akdeniz Bölgesi',
     color: '#ef4444',
     image: 'https://images.unsplash.com/photo-1534063230623-ac4bc8586ea2?auto=format&fit=crop&w=800&q=80',
     text: 'Akdeniz Bölgesi, uçsuz bucaksız plajları, Toros Dağları ve sıcacık iklimiyle harika bir bölgedir. Turunçgil bahçeleri ve tarihi kalıntılarıyla eşsiz bir deneyim sunar.',
-    video: '/akdeniz halka boncuk.mp4'
+    video: '/akdeniz halka boncuk.mp4',
+    orientation: 'vertical'
   },
   'ic-anadolu': {
     name: 'İç Anadolu Bölgesi',
     color: '#f59e0b',
     image: 'https://images.unsplash.com/photo-1563212046-24eeb64f51e1?auto=format&fit=crop&w=800&q=80',
     text: 'İç Anadolu, bozkırın ortasında yükselen Kapadokya peri bacaları ve köklü tarihi ile medeniyetin beşiğidir. Türkiye\'nin tahıl ambarı olarak da bilinir.',
-    video: '/icanadolu citi piti.mp4'
+    video: '/icanadolu citi piti.mp4',
+    orientation: 'horizontal'
   },
   'karadeniz': {
     name: 'Karadeniz Bölgesi',
     color: '#06b6d4',
     image: 'https://images.unsplash.com/photo-1587313361138-03828949826f?auto=format&fit=crop&w=800&q=80',
     text: 'Karadeniz Bölgesi, yemyeşil doğası, hırçın denizi ve yaylalarıyla büyüleyici bir atmosfere sahiptir. Çay ve fındık bahçeleriyle meşhurdur.',
-    video: '/karadeniz pullu boncuk.mp4'
+    video: '/karadeniz pullu boncuk.mp4',
+    orientation: 'vertical'
   },
   'dogu-anadolu': {
     name: 'Doğu Anadolu Bölgesi',
     color: '#8b5cf6',
     image: 'https://images.unsplash.com/photo-1596489379683-144f83733075?auto=format&fit=crop&w=800&q=80',
     text: 'Doğu Anadolu Bölgesi, sarp dağları, karla kaplı zirveleri ve tarihi kaleleriyle mistik bir diyardır. Türkiye\'nin en büyük gölü olan Van Gölü buradadır.',
-    video: 'https://vjs.zencdn.net/v/oceans.mp4'
+    video: 'https://vjs.zencdn.net/v/oceans.mp4',
+    orientation: 'horizontal'
   },
   'guneydogu-anadolu': {
     name: 'Güneydoğu Anadolu Bölgesi',
     color: '#ec4899',
     image: 'https://images.unsplash.com/photo-1601004149632-1f4864c39df4?auto=format&fit=crop&w=800&q=80',
     text: 'Güneydoğu Anadolu, Mezopotamya uygarlıklarına ev sahipliği yapan, taş evleri ve enfes mutfağıyla eşsizdir. Zeugma ve Göbeklitepe gibi dünyanın en eski kalıntılarına ev sahipliği yapar.',
-    video: 'https://vjs.zencdn.net/v/oceans.mp4'
+    video: 'https://vjs.zencdn.net/v/oceans.mp4',
+    orientation: 'horizontal'
   }
 };
 
@@ -355,7 +362,9 @@ export default function App() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.5 }}
-                  className="relative rounded-2xl overflow-hidden bg-black border border-neutral-800 aspect-video group"
+                  className={`relative rounded-2xl overflow-hidden bg-black border border-neutral-800 ${
+                    activeData.orientation === 'vertical' ? 'aspect-[9/16] w-full max-w-[340px] mx-auto' : 'aspect-video'
+                  } group`}
                 >
                   <video 
                     ref={videoRef}
