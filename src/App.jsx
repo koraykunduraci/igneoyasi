@@ -274,7 +274,7 @@ export default function App() {
 
               <div className="p-6 sm:p-12 overflow-y-auto prose prose-neutral prose-headings:text-neutral-900 prose-p:text-neutral-700 prose-p:text-justify max-w-none text-left">
                 {infoModal === 'intro' && (
-                  <div className="w-full h-full flex flex-col items-center justify-center opacity-0 animate-[fadeIn_0.5s_ease-out_forwards]">
+                  <div className="w-full h-full flex flex-col items-center justify-center">
                     <h2 className="text-2xl font-bold mb-6 text-center text-transparent bg-clip-text bg-gradient-to-r from-orange-600 to-rose-600">{t.intro_video}</h2>
                     <video 
                       src="/intro.mp4" 
