@@ -94,12 +94,12 @@ export default function App() {
       {/* Header */}
       <header className="pt-8 sm:pt-14 pb-4 sm:pb-8 px-4 sm:px-6 text-center relative w-full border-b border-neutral-200 mb-4 bg-white/70 backdrop-blur-md shadow-sm">
         {/* Left Logo */}
-        <div className="absolute top-4 left-4 sm:top-6 sm:left-8 z-20 bg-white p-1 sm:p-2 rounded-xl shadow-lg h-[72px] w-[144px] sm:h-[120px] sm:w-[192px] flex items-center justify-center overflow-hidden hover:scale-105 transition-transform duration-300">
-          <img src="/mba logo.jpg" alt="Logo 1" className="max-h-full max-w-full object-contain" onError={(e) => { e.target.style.display='none'; e.target.parentNode.innerHTML='<span class="text-xs text-black font-bold">Logo 1</span>' }} />
+        <div className="absolute top-4 left-4 sm:top-6 sm:left-8 z-20 h-[72px] w-[144px] sm:h-[120px] sm:w-[192px] flex items-center justify-center overflow-visible">
+          <img src="/mba logo.jpg" alt="Logo 1" className="max-h-full max-w-full object-contain mix-blend-multiply" onError={(e) => { e.target.style.display='none'; e.target.parentNode.innerHTML='<span class="text-xs text-black font-bold">Logo 1</span>' }} />
         </div>
         
         {/* Right Logo */}
-        <div className="absolute top-4 right-4 sm:top-6 sm:right-8 z-20 bg-white p-1 sm:p-2 rounded-xl shadow-lg h-[72px] w-[144px] sm:h-[120px] sm:w-[192px] flex items-center justify-center overflow-hidden hover:scale-105 transition-transform duration-300">
+        <div className="absolute top-4 right-4 sm:top-6 sm:right-8 z-20 h-[72px] w-[144px] sm:h-[120px] sm:w-[192px] flex items-center justify-center overflow-visible">
           <img src="/tubitak logo.png" alt="Logo 2" className="max-h-full max-w-full object-contain" onError={(e) => { e.target.style.display='none'; e.target.parentNode.innerHTML='<span class="text-xs text-black font-bold">Logo 2</span>' }} />
         </div>
         
