@@ -125,20 +125,20 @@ export default function App() {
     >
       
       {/* Top Language Bar */}
-      <div className="absolute top-4 right-4 z-50 flex items-center justify-center gap-2 bg-white/80 backdrop-blur-md rounded-full p-2 border border-neutral-200 shadow-sm">
+      <div className="absolute top-4 right-4 z-50 flex items-center justify-center gap-6 bg-white/80 backdrop-blur-md rounded-full px-4 py-3 border border-neutral-200 shadow-sm">
         <button 
           onClick={() => setLang('tr')} 
-          className={`flex items-center justify-center w-8 h-8 rounded-full overflow-hidden transition-all ${lang === 'tr' ? 'ring-2 ring-offset-2 ring-orange-500 scale-110' : 'opacity-70 hover:opacity-100 hover:scale-105'}`}
+          className={`flex items-center justify-center w-11 h-11 rounded-full overflow-hidden transition-all ${lang === 'tr' ? 'ring-2 ring-offset-2 ring-orange-500 scale-110' : 'opacity-70 hover:opacity-100 hover:scale-105'}`}
           title="Türkçe"
         >
-          <img src="https://flagcdn.com/w40/tr.png" alt="TR" className="w-full h-full object-cover" />
+          <img src="https://flagcdn.com/tr.svg" alt="TR" className="w-full h-full object-cover" />
         </button>
         <button 
           onClick={() => setLang('en')} 
-          className={`flex items-center justify-center w-8 h-8 rounded-full overflow-hidden transition-all ${lang === 'en' ? 'ring-2 ring-offset-2 ring-rose-500 scale-110' : 'opacity-70 hover:opacity-100 hover:scale-105'}`}
+          className={`flex items-center justify-center w-11 h-11 rounded-full overflow-hidden transition-all ${lang === 'en' ? 'ring-2 ring-offset-2 ring-rose-500 scale-110' : 'opacity-70 hover:opacity-100 hover:scale-105'}`}
           title="English"
         >
-          <img src="https://flagcdn.com/w40/gb.png" alt="EN" className="w-full h-full object-cover" />
+          <img src="https://flagcdn.com/gb.svg" alt="EN" className="w-full h-full object-cover" />
         </button>
       </div>
 
@@ -297,57 +297,62 @@ export default function App() {
 
                 {infoModal === 'detay' && (
                   <>
-                    <h1 className="text-3xl sm:text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-orange-600 to-rose-600 mb-8 text-center">{t.project_detail_report}</h1>
+                    <h1 className="text-3xl sm:text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-orange-600 to-rose-600 mb-8 text-center">{t.detail_report}</h1>
                     
-                    <h3 className="text-2xl font-bold border-b pb-2 mb-4 text-orange-600">{t.abstract}</h3>
+                    <h3 className="text-2xl font-bold border-b pb-2 mb-4 text-orange-600">{t.summary}</h3>
                     <p className="text-lg leading-relaxed mb-8">
-                      {t.abstract_p1}
+                      {t.summary_text_1}
                       <br /><br />
-                      {t.abstract_p2}
+                      {t.summary_text_2}
                       <br /><br />
-                      {t.abstract_p3}
+                      {t.summary_text_3}
                     </p>
 
-                    <h3 className="text-2xl font-bold border-b pb-2 mb-4 text-orange-600">{t.introduction}</h3>
+                    <h3 className="text-2xl font-bold border-b pb-2 mb-4 text-orange-600">{t.intro}</h3>
                     <p className="text-lg leading-relaxed mb-8">
-                      {t.introduction_text}
+                      <span dangerouslySetInnerHTML={{ __html: t.intro_text }} />
                     </p>
 
                     <h3 className="text-2xl font-bold border-b pb-2 mb-4 text-orange-600">{t.method}</h3>
                     <p className="text-lg leading-relaxed mb-8">
-                      {t.method_p1}
+                      <span dangerouslySetInnerHTML={{ __html: t.method_text_1 }} />
                       <br /><br />
-                      {t.method_p2}
+                      <span dangerouslySetInnerHTML={{ __html: t.method_text_2 }} />
                       <br /><br />
-                      {t.method_p3}
+                      <span dangerouslySetInnerHTML={{ __html: t.method_text_3 }} />
                       <br /><br />
-                      {t.method_p4}
+                      <span dangerouslySetInnerHTML={{ __html: t.method_text_4 }} />
                     </p>
 
-                    <h3 className="text-2xl font-bold border-b pb-2 mb-4 text-orange-600">{t.conclusion_discussion}</h3>
+                    <h3 className="text-2xl font-bold border-b pb-2 mb-4 text-orange-600">{t.conclusion}</h3>
                     <p className="text-lg leading-relaxed mb-8">
                       {t.conclusion_text}
                     </p>
 
-                    <h3 className="text-2xl font-bold border-b pb-2 mb-4 text-orange-600">{t.recommendations}</h3>
+                    <h3 className="text-2xl font-bold border-b pb-2 mb-4 text-orange-600">{t.suggestions}</h3>
                     <p className="text-lg leading-relaxed mb-8">
-                      {t.recommendations_text}
+                      {t.suggestions_text}
                     </p>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
                       <div>
-                        <h3 className="text-2xl font-bold border-b pb-2 mb-4 text-orange-600">{t.acknowledgements}</h3>
+                        <h3 className="text-2xl font-bold border-b pb-2 mb-4 text-orange-600">{t.thanks}</h3>
                         <p className="text-base leading-relaxed text-neutral-600 italic">
-                          {t.acknowledgements_text}
+                          {t.thanks_text}
                         </p>
                       </div>
                       
                       <div className="bg-neutral-50 p-6 rounded-2xl border border-neutral-100">
-                        <h3 className="text-xl font-bold border-b pb-2 mb-4 text-neutral-800">{t.references}</h3>
+                        <h3 className="text-xl font-bold border-b pb-2 mb-4 text-neutral-800">{t.sources}</h3>
                         <ul className="space-y-2 text-sm text-neutral-500 break-words list-disc pl-4">
-                          {t.references_list.map((ref, idx) => (
-                            <li key={idx}>{ref}</li>
-                          ))}
+                          <li>{t.sources_1}</li>
+                          <li>{t.sources_2}</li>
+                          <li>{t.sources_3}</li>
+                          <li>{t.sources_4}</li>
+                          <li>{t.sources_5}</li>
+                          <li>{t.sources_6}</li>
+                          <li>{t.sources_7}</li>
+                          <li>{t.sources_8}</li>
                         </ul>
                       </div>
                     </div>
@@ -358,79 +363,79 @@ export default function App() {
                 {infoModal === 'arastirma' && (
                   <>
                     <div className="text-center mb-10">
-                      <h1 className="text-3xl sm:text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-neutral-600 to-neutral-900 mb-4 inline-block">{t.general_characteristics}</h1>
-                      <h2 className="text-xl font-medium text-neutral-500">{t.academic_research_text}</h2>
+                      <h1 className="text-3xl sm:text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-neutral-600 to-neutral-900 mb-4 inline-block">{t.academic_title}</h1>
+                      <h2 className="text-xl font-medium text-neutral-500">{t.academic_text}</h2>
                     </div>
 
                     <h3 className="text-2xl font-bold border-b pb-2 mb-4">{t.foreword}</h3>
                     <p className="text-lg leading-relaxed mb-6">
-                      {t.foreword_p1}
+                      {t.foreword_1}
                     </p>
                     <p className="text-lg leading-relaxed mb-8">
-                      {t.foreword_p2}
+                      {t.foreword_2}
                     </p>
                     <p className="text-lg leading-relaxed mb-8">
-                      {t.foreword_p3}
+                      {t.foreword_3}
                     </p>
 
-                    <h3 className="text-2xl font-bold border-b pb-2 mb-4 mt-8">{t.introduction}</h3>
+                    <h3 className="text-2xl font-bold border-b pb-2 mb-4 mt-8">{t.intro}</h3>
                     <p className="text-lg leading-relaxed mb-6">
-                      {t.research_intro_p1}
+                      {t.intro_long_1}
                     </p>
                     <p className="text-lg leading-relaxed mb-6">
-                      {t.research_intro_p2}
+                      {t.intro_long_2}
                     </p>
                     <p className="text-lg leading-relaxed mb-6">
-                      {t.research_intro_p3}
+                      {t.intro_long_3}
                     </p>
                     <p className="text-lg leading-relaxed mb-6">
-                      {t.research_intro_p4}
+                      {t.intro_long_4}
                     </p>
                     <p className="text-lg leading-relaxed mb-6">
-                      {t.research_intro_p5}
+                      {t.intro_long_5}
                     </p>
                     <p className="text-lg leading-relaxed mb-6">
-                      {t.research_intro_p6}
+                      {t.intro_long_6}
                     </p>
                     <p className="text-lg leading-relaxed mb-6">
-                      {t.research_intro_p7}
+                      {t.intro_long_7}
                     </p>
                     <p className="text-lg leading-relaxed mb-8">
-                      {t.research_intro_p8}
+                      {t.intro_long_8}
                     </p>
 
                     <h3 className="text-2xl font-bold border-b pb-2 mb-4 mt-8">{t.historical_development}</h3>
                     <p className="text-lg leading-relaxed mb-6">
-                      {t.history_p1}
+                      {t.historical_1}
                     </p>
                     <p className="text-lg leading-relaxed mb-6">
-                      {t.history_p2}
+                      {t.historical_2}
                     </p>
                     <p className="text-lg leading-relaxed mb-6">
-                      {t.history_p3}
+                      {t.historical_3}
                     </p>
                     <p className="text-lg leading-relaxed mb-8">
-                      {t.history_p4}
+                      {t.historical_4}
                     </p>
 
-                    <h3 className="text-2xl font-bold border-b pb-2 mb-4 mt-8">{t.materials_used}</h3>
+                    <h3 className="text-2xl font-bold border-b pb-2 mb-4 mt-8">{t.materials}</h3>
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8 mt-6">
                       <div className="bg-neutral-50 p-6 rounded-2xl border border-neutral-100">
                         <h4 className="text-xl font-bold text-neutral-800 mb-2">{t.cotton_yarn}</h4>
                         <p className="text-base text-neutral-600">
-                          {t.cotton_yarn_text}
+                          {t.cotton_yarn_desc}
                         </p>
                       </div>
                       <div className="bg-neutral-50 p-6 rounded-2xl border border-neutral-100">
                         <h4 className="text-xl font-bold text-neutral-800 mb-2">{t.synthetic_yarn}</h4>
                         <p className="text-base text-neutral-600">
-                          {t.synthetic_yarn_text}
+                          {t.synthetic_yarn_desc}
                         </p>
                       </div>
                       <div className="bg-neutral-50 p-6 rounded-2xl border border-neutral-100">
-                        <h4 className="text-xl font-bold text-neutral-800 mb-2">{t.bead}</h4>
+                        <h4 className="text-xl font-bold text-neutral-800 mb-2">{t.beads}</h4>
                         <p className="text-base text-neutral-600">
-                          {t.bead_text}
+                          {t.beads_desc}
                         </p>
                       </div>
                     </div>
