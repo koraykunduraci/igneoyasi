@@ -86,7 +86,17 @@ export default function App() {
     <div className="min-h-screen bg-neutral-950 text-neutral-100 font-sans selection:bg-indigo-500 selection:text-white">
       
       {/* Header */}
-      <header className="pt-8 sm:pt-12 pb-4 sm:pb-8 px-4 sm:px-6 text-center">
+      <header className="pt-8 sm:pt-12 pb-4 sm:pb-8 px-4 sm:px-6 text-center relative w-full">
+        {/* Left Logo */}
+        <div className="absolute top-4 left-4 sm:top-6 sm:left-8 z-20">
+          <img src="/logo.jpg" alt="MBA Okulları" className="h-12 sm:h-20 w-auto object-contain rounded-lg shadow-lg" />
+        </div>
+        
+        {/* Right Logo */}
+        <div className="absolute top-4 right-4 sm:top-6 sm:right-8 z-20 bg-white/90 p-2 rounded-xl shadow-lg backdrop-blur-sm">
+          <img src="/logo2.png" alt="TÜBİTAK" className="h-10 sm:h-16 w-auto object-contain" />
+        </div>
+        
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -94,7 +104,7 @@ export default function App() {
         >
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-2 sm:mb-4">
             <MapPin className="w-6 h-6 sm:w-8 sm:h-8 text-indigo-400" />
-            <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent pb-2">
               İğnenin Ucundaki Sessiz Dil
             </h1>
           </div>
