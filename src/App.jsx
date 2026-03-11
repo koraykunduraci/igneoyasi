@@ -9,7 +9,7 @@ const REGION_DATA = {
     color: '#3b82f6',
     image: 'https://images.unsplash.com/photo-1541432901042-2d8bd64b4a9b?auto=format&fit=crop&w=800&q=80',
     text: 'Marmara Bölgesi’nde başörtüsü kenarlarına uygulanan boncuklu oyalar, bölgenin el sanatları mirasının önemli bir parçasını oluşturur. İğne oyasının inceliği ile cam boncuğun estetik görünümünü bir araya getiren bu oya türleri, yalnızca süsleme amaçlı değil; aynı zamanda köklü kültürel inançları, sosyal mesajları ve geleneksel değerleri yansıtan bir iletişim biçimi niteliğindedir. Koruma, sevgi, zarafet, bereket gibi anlamlar taşıyan motifleriyle Marmara’nın boncuklu başörtü oyaları (özellikle Nazar Boncuğu ve Karanfil oyaları), hem çeyiz geleneğinin hem de halk sanatının canlı ve özgün örneklerini günümüze taşımaktadır.',
-    oyalar: [{ isim: 'Nazar Boncuğu Oyası', tanim: 'Halk arasında "kem gözlerden korunma" inancıyla yapılan ve özellikle yazma, yemeni ve çeyizliklerde sık kullanılan bir boncuklu iğne oyası türüdür. Mavi, lacivert, beyaz ve sarı tonlarında nazar boncuğu şeklinde cam boncuklar kullanılır.' }, { isim: 'Karanfil Oyası', tanim: 'Tülbent kenarlarına işlenen ve karanfil çiçeğini andıran boncuklu ya da iğne oyası motifidir. Sevgi, zarafet ve kadın emeğini temsil eder. Bazı yörelerde "karanfil gibi narin kız" anlamında hediye edilir.' }],
+    oyalar: [{ isim: 'Nazar Boncuğu Oyası', tanim: 'Halk arasında "kem gözlerden korunma" inancıyla yapılan ve özellikle yazma, yemeni ve çeyizliklerde sık kullanılan bir boncuklu iğne oyası türüdür. Mavi, lacivert, beyaz ve sarı tonlarında nazar boncuğu şeklinde cam boncuklar kullanılır.', image: '/oya_image_15.jpeg' }, { isim: 'Karanfil Oyası', tanim: 'Tülbent kenarlarına işlenen ve karanfil çiçeğini andıran boncuklu ya da iğne oyası motifidir. Sevgi, zarafet ve kadın emeğini temsil eder. Bazı yörelerde "karanfil gibi narin kız" anlamında hediye edilir.', image: '/oya_image_16.jpeg' }],
     videos: [{ src: '/marmara nazar.mp4', orientation: 'horizontal' }]
   },
   'ege': {
@@ -17,7 +17,7 @@ const REGION_DATA = {
     color: '#10b981',
     image: 'https://images.unsplash.com/photo-1502095819777-62f79fb650fe?auto=format&fit=crop&w=800&q=80',
     text: 'Ege Bölgesi başörtülerinde kullanılan boncuk oyaları, bölgenin geleneksel giyim kültürünün estetik ve sembolik bir parçasıdır. Ege’nin doğal ve kültürel yapısı, oya motiflerine zeytin dalı, üzüm salkımı, papatya, deniz kabuğu gibi temalarla yansır. Canlı ve açık tonların hâkim olduğu turkuaz, pembe, sarı ve yeşil renkler; parlak cam ya da inci görünümlü boncuklarla birlikte kullanılarak başörtülerine hareketli ve gösterişli bir görünüm kazandırır.',
-    oyalar: [{ isim: 'Zeytin Dalı Oyası', tanim: 'Ege\'nin simgesi olan zeytin ağacından ilham alınarak yapılan, özellikle tülbent ve yazma kenarlarını süsleyen geleneksel bir iğne/boncuk oyası motifidir. Barış, bereket, umut ve direnç simgesidir.' }, { isim: 'Gelin Buketi Oyası', tanim: 'Adını düğünlerde gelinlerin taşıdığı renkli çiçek demetlerinden alır. Çeşitli çiçek motiflerinin bir araya getirilmesiyle oluşturulur. Mutluluk, sevgi, neşe ve yeni başlangıçlar anlamı taşır.' }],
+    oyalar: [{ isim: 'Zeytin Dalı Oyası', tanim: 'Ege\'nin simgesi olan zeytin ağacından ilham alınarak yapılan, özellikle tülbent ve yazma kenarlarını süsleyen geleneksel bir iğne/boncuk oyası motifidir. Barış, bereket, umut ve direnç simgesidir.', image: '/oya_image_7.jpeg' }, { isim: 'Gelin Buketi Oyası', tanim: 'Adını düğünlerde gelinlerin taşıdığı renkli çiçek demetlerinden alır. Çeşitli çiçek motiflerinin bir araya getirilmesiyle oluşturulur. Mutluluk, sevgi, neşe ve yeni başlangıçlar anlamı taşır.', image: '/oya_image_8.jpeg' }],
     videos: [{ src: '/ege pullu oya.mp4', orientation: 'vertical' }]
   },
 
@@ -26,7 +26,7 @@ const REGION_DATA = {
     color: '#ef4444',
     image: 'https://images.unsplash.com/photo-1534063230623-ac4bc8586ea2?auto=format&fit=crop&w=800&q=80',
     text: 'Akdeniz Bölgesinde boncuk oyalarının iki ve üç boyutlu olarak yapıldığı, en çok tülbent kenarlarına dikildiği ve başörtüsü olarak kullanıldığı görülmektedir. Boncukla yapılan oyalarda en çok tığ ve iğne oyası teknikleri uygulanırken farklı oranlarda mekik, firkete ve şişle yapılan temel teknikler de kullanılmaktadır.',
-    oyalar: [{ isim: 'Gül Oyası', tanim: 'Adını güle benzeyen desenlerinden alır. Gül motifi, sevgi, zarafet ve güzelliği simgeler. Kırmızı, pembe, mor renkleriyle narin, ince bir kişilik mesajı ileten bir oyadır.' }, { isim: 'Kafes (File) Oyası', tanim: 'Temel yapısı, düzenli kare boşluklar oluşturularak örülür. Üst kısmına genellikle boncuk, pul veya küçük motifler (çiçek, meyve) işlenir. Sabır ve zarafet simgesi olarak görülür.' }],
+    oyalar: [{ isim: 'Gül Oyası', tanim: 'Adını güle benzeyen desenlerinden alır. Gül motifi, sevgi, zarafet ve güzelliği simgeler. Kırmızı, pembe, mor renkleriyle narin, ince bir kişilik mesajı ileten bir oyadır.', image: '/oya_image_3.jpeg' }, { isim: 'Kafes (File) Oyası', tanim: 'Temel yapısı, düzenli kare boşluklar oluşturularak örülür. Üst kısmına genellikle boncuk, pul veya küçük motifler (çiçek, meyve) işlenir. Sabır ve zarafet simgesi olarak görülür.', image: '/oya_image_4.jpeg' }],
     videos: [
       { src: '/akdeniz halka boncuk.mp4', orientation: 'vertical' },
       { src: '/akdeniz yıldız oyası.mp4', orientation: 'vertical' }
@@ -37,7 +37,7 @@ const REGION_DATA = {
     color: '#f59e0b',
     image: 'https://images.unsplash.com/photo-1563212046-24eeb64f51e1?auto=format&fit=crop&w=800&q=80',
     text: 'İç Anadolu Bölgesi’nde başörtüler (yazma, tülbent) çoğunlukla sade zemin üzerine işlenen boncuk oyalarıyla süslenmektedir. Bölgenin kültürel yapısında sadelik, dayanıklılık ve zarafet ön planda olduğu için oya motifleri de genellikle küçük, düzenli ve gösterişten uzak tasarımlardan oluşur. Boncuklar, iplik üzerinde ritmik bir şekilde dizilerek küçük çiçek, tomurcuk veya damla biçimli motifler oluşturur.',
-    oyalar: [{ isim: 'Çıtı Pıtı Oyası', tanim: 'Adını küçük ve zarif motiflerinden alır. Minik boncuklar ya da iplerle yapılan küçük çiçek, tomurcuk ya da damla şekilleri içerir. İncelik, sadelik ve zarafetin simgesidir.' }, { isim: 'Biber Oyası', tanim: 'Boncuklarla biber şekline benzeyen ince ve sivri form verilir. Sadece bereket ve üretkenliği değil, sivri ucu sebebiyle "lafını esirgemeyen gelin" gibi karakter mesajları da taşır.' }],
+    oyalar: [{ isim: 'Çıtı Pıtı Oyası', tanim: 'Adını küçük ve zarif motiflerinden alır. Minik boncuklar ya da iplerle yapılan küçük çiçek, tomurcuk ya da damla şekilleri içerir. İncelik, sadelik ve zarafetin simgesidir.', image: '/oya_image_11.jpeg' }, { isim: 'Biber Oyası', tanim: 'Boncuklarla biber şekline benzeyen ince ve sivri form verilir. Sadece bereket ve üretkenliği değil, sivri ucu sebebiyle "lafını esirgemeyen gelin" gibi karakter mesajları da taşır.', image: '/oya_image_12.jpeg' }],
     videos: [{ src: '/icanadolu citi piti.mp4', orientation: 'horizontal' }]
   },
   'karadeniz': {
@@ -45,7 +45,7 @@ const REGION_DATA = {
     color: '#06b6d4',
     image: 'https://images.unsplash.com/photo-1587313361138-03828949826f?auto=format&fit=crop&w=800&q=80',
     text: 'Karadeniz bölgesinin hanımları, birbirinden farklı iğne oyaları ile sezonun renklendirilmesinde büyük katkıda bulunmaya devam ediyorlar. Karadeniz iğne oyası denince hemen aklımıza alnının önünde boncuk süslemeli yazmalar gelir. Görünürde güzel olduğu kadar yapımı da bir o kadar heyecan vericidir.',
-    oyalar: [{ isim: 'Horon Oyası', tanim: 'Adını Karadeniz’in en bilinen coşkulu halk dansı olan horondan alır. Horonda el ele dizilen insanlar gibi oyadaki motifler de sıralı, ritmik ve canlı şekilde dizilir.' }, { isim: 'Dere Başı Pıtırak Oyası', tanim: 'Karadeniz’in zengin doğasından esinlenerek geliştirilmiş, dere kenarlarında yetişen pıtırak bitkisinden adını alan oya modelidir. Tıpkı pıtırak gibi bir yere tutunup kopmayan güçlü kadını simgeler.' }],
+    oyalar: [{ isim: 'Horon Oyası', tanim: 'Adını Karadeniz’in en bilinen coşkulu halk dansı olan horondan alır. Horonda el ele dizilen insanlar gibi oyadaki motifler de sıralı, ritmik ve canlı şekilde dizilir.', image: '/oya_image_13.jpeg' }, { isim: 'Dere Başı Pıtırak Oyası', tanim: 'Karadeniz’in zengin doğasından esinlenerek geliştirilmiş, dere kenarlarında yetişen pıtırak bitkisinden adını alan oya modelidir. Tıpkı pıtırak gibi bir yere tutunup kopmayan güçlü kadını simgeler.', image: '/oya_image_14.jpeg' }],
     videos: [{ src: '/karadeniz pullu boncuk.mp4', orientation: 'vertical' }]
   },
   'dogu-anadolu': {
@@ -53,14 +53,14 @@ const REGION_DATA = {
     color: '#8b5cf6',
     image: 'https://images.unsplash.com/photo-1596489379683-144f83733075?auto=format&fit=crop&w=800&q=80',
     text: 'Anadolu\'nun Doğu bölgelerinde boncuk oyaları geleneksel Türk kültürünün önemli bir parçası olarak kabul edilmektedir. Bu sanat, Anadolu kadınının yüzyıllar öncesinden bugüne taşıdığı estetikleri yansıtmaktadır. Tığ, mekik, firkete, koza, yün, mum, dokuma gibi tekniklerle, doğanın zengin dokusundan ilhamla işlenir.',
-    oyalar: [{ isim: 'Van Gölü Dalgası Oyası', tanim: 'Adını Türkiye’nin en büyük gölü olan Van Gölü’nün dalgalarından alan bu model, dalga formunu andıran kıvrımlı, sıralı motifler barındırır. Sabır, huzur ve süreklilik temalarını simgeler.' }, { isim: 'Fıstık Oyası', tanim: '"Fıstık" adı verilen küçük, top şeklinde motiflerden oluşan sağlam bir oya türüdür. Bereket, zenginlik ve kadının emeğini taşır.' }]
+    oyalar: [{ isim: 'Van Gölü Dalgası Oyası', tanim: 'Adını Türkiye’nin en büyük gölü olan Van Gölü’nün dalgalarından alan bu model, dalga formunu andıran kıvrımlı, sıralı motifler barındırır. Sabır, huzur ve süreklilik temalarını simgeler.', image: '/oya_image_5.jpeg' }, { isim: 'Fıstık Oyası', tanim: '"Fıstık" adı verilen küçük, top şeklinde motiflerden oluşan sağlam bir oya türüdür. Bereket, zenginlik ve kadının emeğini taşır.', image: '/oya_image_6.jpeg' }]
   },
   'guneydogu-anadolu': {
     name: 'Güneydoğu Anadolu Bölgesi',
     color: '#ec4899',
     image: 'https://images.unsplash.com/photo-1601004149632-1f4864c39df4?auto=format&fit=crop&w=800&q=80',
     text: 'Güneydoğu Anadolu Bölgesi’nde boncuk oyaları canlı ve parlak renklerin koyu tonlardaki başörtüsü kenarlarına ritmik bir düzen içinde işlenmesiyle oluşturulur. Motiflerde bereketi simgeleyen nar, buğday başağı, yıldız kullanılırken; nazardan korunmayı temsil eden göz motifi de görülür. Prestij unsurudur; düğün ve kına gecelerinde geleneğin en büyük göstergesidir.',
-    oyalar: [{ isim: 'Mardin Taşı Oyası', tanim: 'Adını Mardin evlerine ilham veren meşhur Sarı Kalker Taşı’ndan alır. Sarı, krem, bej tonlarıyla sadelik ve asaletin simgesidir. Kadının sabrı ve geleneklerine bağlılığını temsil eder.' }, { isim: 'Halay Boncuğu Oyası', tanim: 'Adını halk dansı halaydan alır. İnsanların el ele tutuşarak oluşturduğu düzenli sıra ve ritmik hareketler bu oyaya esin kaynağı olmuştur. Toplumsal dayanışma, birlik ve kutlamaların simgesidir.' }]
+    oyalar: [{ isim: 'Mardin Taşı Oyası', tanim: 'Adını Mardin evlerine ilham veren meşhur Sarı Kalker Taşı’ndan alır. Sarı, krem, bej tonlarıyla sadelik ve asaletin simgesidir. Kadının sabrı ve geleneklerine bağlılığını temsil eder.', image: '/oya_image_9.jpeg' }, { isim: 'Halay Boncuğu Oyası', tanim: 'Adını halk dansı halaydan alır. İnsanların el ele tutuşarak oluşturduğu düzenli sıra ve ritmik hareketler bu oyaya esin kaynağı olmuştur. Toplumsal dayanışma, birlik ve kutlamaların simgesidir.', image: '/oya_image_10.jpeg' }]
   }
 };
 
@@ -130,32 +130,44 @@ export default function App() {
       }}
     >
       
-      {/* Header */}
-      <header className="pt-2 sm:pt-4 pb-4 sm:pb-8 px-4 sm:px-6 text-center relative w-full mb-4">
-        {/* Left Logo */}
-        <div className="absolute top-4 left-4 sm:top-6 sm:left-8 z-20 h-[72px] w-[144px] sm:h-[120px] sm:w-[192px] flex items-center justify-center overflow-visible">
-          <img src="/mba logo.jpg" alt="Logo 1" className="max-h-full max-w-full object-contain mix-blend-multiply" onError={(e) => { e.target.style.display='none'; e.target.parentNode.innerHTML='<span class="text-xs text-black font-bold">Logo 1</span>' }} />
-        </div>
-        
-        {/* Right Logo */}
-        <div className="absolute top-4 right-4 sm:top-6 sm:right-8 z-20 h-[72px] w-[144px] sm:h-[120px] sm:w-[192px] flex items-center justify-center overflow-visible">
-          <img src="/tubitak logo.png" alt="Logo 2" className="max-h-full max-w-full object-contain" onError={(e) => { e.target.style.display='none'; e.target.parentNode.innerHTML='<span class="text-xs text-black font-bold">Logo 2</span>' }} />
-        </div>
-        
-        <motion.div
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
+      {/* Header Banner */}
+      <header className="pt-4 sm:pt-8 pb-4 sm:pb-8 px-4 sm:px-6 w-full max-w-7xl mx-auto flex items-center justify-center relative z-20">
+        <motion.div 
+          initial={{ y: -20, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="mt-20 sm:mt-12"
+          className="bg-white/95 backdrop-blur-md rounded-2xl md:rounded-full px-4 py-4 md:px-10 md:py-6 shadow-xl border border-neutral-200 flex flex-col md:flex-row items-center justify-between gap-6 md:gap-12 w-full max-w-6xl"
         >
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-2 sm:mb-4">
-            <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight bg-gradient-to-r from-orange-600 via-rose-600 to-purple-600 bg-clip-text text-transparent pb-2 drop-shadow-sm">
-              İğnenin Ucundaki Sessiz Dil
-            </h1>
+          {/* Left Logo - Sanayi Bakanligi */}
+          <div className="flex-shrink-0 h-16 md:h-24 w-auto flex items-center justify-center">
+            <img 
+              src="https://upload.wikimedia.org/wikipedia/commons/e/ea/Logo_of_the_Ministry_of_Industry_and_Technology_%28Turkey%29.svg" 
+              alt="T.C. Sanayi ve Teknoloji Bakanlığı" 
+              className="max-h-full object-contain"
+            />
           </div>
-          <p className="text-neutral-600 text-base sm:text-lg max-w-2xl mx-auto px-2 font-medium text-justify">
-            Sözün bittiği yerde iğnenin konuştuğu; Anadolu kadınlarının sevincini, hüznünü ve umudunu ilmek ilmek işlediği oya kültürünü haritada keşfedin.
-          </p>
+
+          {/* Central Text Block */}
+          <div className="flex flex-col items-center justify-center text-center flex-1">
+            <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-extrabold text-[#111827] tracking-tight uppercase mb-1">
+              İĞNENİN UCUNDAKİ SESSİZ DİL
+            </h1>
+            <h2 className="text-sm md:text-base lg:text-lg font-semibold text-[#374151] mb-2 leading-snug">
+              Boncuk Oyalarının Anadolu Kültüründeki İletişim Rolü
+            </h2>
+            <p className="text-xs md:text-sm font-medium text-[#4b5563]">
+              Alperen KOYUNCU, Derin ZÜLFÜKAR, Ömer Asaf KARABACAK
+            </p>
+          </div>
+
+          {/* Right Logo - Tubitak */}
+          <div className="flex-shrink-0 h-16 md:h-24 w-auto flex items-center justify-center">
+            <img 
+              src="/tubitak logo.png" 
+              alt="TÜBİTAK" 
+              className="max-h-full object-contain"
+            />
+          </div>
         </motion.div>
       </header>
 
@@ -487,9 +499,14 @@ export default function App() {
                     className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-2"
                   >
                     {activeData.oyalar.map((oya, idx) => (
-                      <div key={idx} className="bg-neutral-800/50 border border-neutral-700 p-4 rounded-xl">
+                      <div key={idx} className="bg-neutral-800/50 border border-neutral-700 p-4 rounded-xl flex flex-col">
+                        {oya.image && (
+                          <div className="w-full h-40 sm:h-48 rounded-lg overflow-hidden mb-3 border border-neutral-700">
+                            <img src={oya.image} alt={oya.isim} className="w-full h-full object-cover rounded-lg hover:scale-105 transition-transform duration-500 ease-out" />
+                          </div>
+                        )}
                         <h4 className="text-white font-semibold text-lg mb-2 flex items-center gap-2">
-                          <div className="w-2 h-2 rounded-full" style={{ backgroundColor: activeData.color }}></div>
+                          <div className="w-2 h-2 rounded-full shrink-0" style={{ backgroundColor: activeData.color }}></div>
                           {oya.isim}
                         </h4>
                         <p className="text-neutral-400 text-sm leading-relaxed text-justify">
