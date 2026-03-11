@@ -141,7 +141,7 @@ export default function App() {
           {/* Left Logo - Sanayi Bakanligi */}
           <div className="flex-shrink-0 h-16 md:h-24 w-auto flex items-center justify-center">
             <img 
-              src="https://upload.wikimedia.org/wikipedia/commons/e/ea/Logo_of_the_Ministry_of_Industry_and_Technology_%28Turkey%29.svg" 
+              src="/bakan.svg" 
               alt="T.C. Sanayi ve Teknoloji Bakanlığı" 
               className="max-h-full object-contain"
             />
