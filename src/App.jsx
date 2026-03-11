@@ -202,22 +202,20 @@ export default function App() {
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3/4 h-3/4 bg-orange-500/10 blur-[100px] rounded-full pointer-events-none -z-0"></div>
       </main>
 
-      {/* Intro Video */}
-      <section className="w-full max-w-4xl mx-auto px-4 sm:px-6 mb-8 relative z-20">
-        <div className="bg-white/80 backdrop-blur-sm p-2 sm:p-3 rounded-2xl md:rounded-3xl shadow-lg border border-neutral-200">
-          <video 
-            src="/intro.mp4" 
-            controls 
-            className="w-full aspect-video rounded-xl md:rounded-2xl object-cover bg-neutral-900"
-          >
-            Tarayıcınız video etiketini desteklemiyor.
-          </video>
-        </div>
-      </section>
 
       {/* Footer Navigation */}
       <footer className="w-full pb-8 pt-4 flex flex-col items-center justify-center gap-4 relative z-20">
-        <div className="flex items-center justify-center gap-4">
+        <motion.button
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+          onClick={() => setInfoModal('intro')}
+          className="cursor-pointer mb-2 flex items-center gap-3 px-8 py-3.5 bg-gradient-to-r from-orange-500 to-rose-500 text-white rounded-full shadow-lg shadow-orange-500/30 hover:shadow-orange-500/50 transition-all font-bold text-base sm:text-lg border-2 border-white/20"
+        >
+          <Play className="w-5 h-5 fill-white" />
+          {t.intro_video}
+        </motion.button>
+        
+        <div className="flex flex-wrap items-center justify-center gap-4">
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
@@ -274,7 +272,21 @@ export default function App() {
                 <X className="w-5 h-5" />
               </button>
 
-              <div className="p-8 sm:p-12 overflow-y-auto prose prose-neutral prose-headings:text-neutral-900 prose-p:text-neutral-700 prose-p:text-justify max-w-none text-left">
+              <div className="p-6 sm:p-12 overflow-y-auto prose prose-neutral prose-headings:text-neutral-900 prose-p:text-neutral-700 prose-p:text-justify max-w-none text-left">
+                {infoModal === 'intro' && (
+                  <div className="w-full h-full flex flex-col items-center justify-center opacity-0 animate-[fadeIn_0.5s_ease-out_forwards]">
+                    <h2 className="text-2xl font-bold mb-6 text-center text-transparent bg-clip-text bg-gradient-to-r from-orange-600 to-rose-600">{t.intro_video}</h2>
+                    <video 
+                      src="/intro.mp4" 
+                      controls 
+                      autoPlay
+                      className="w-full aspect-video rounded-xl md:rounded-2xl bg-black shadow-2xl object-contain"
+                    >
+                      Tarayıcınız video etiketini desteklemiyor.
+                    </video>
+                  </div>
+                )}
+                
                 {infoModal === 'onbilgi' && (
                   <>
                     <div className="text-center mb-10">
