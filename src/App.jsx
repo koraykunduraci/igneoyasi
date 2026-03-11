@@ -209,7 +209,6 @@ export default function App() {
             src="/intro.mp4" 
             controls 
             className="w-full aspect-video rounded-xl md:rounded-2xl object-cover bg-neutral-900"
-            poster="/mba logo.jpg"
           >
             Tarayıcınız video etiketini desteklemiyor.
           </video>
