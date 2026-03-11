@@ -93,7 +93,7 @@ export default function App() {
     >
       
       {/* Header */}
-      <header className="pt-8 sm:pt-14 pb-4 sm:pb-8 px-4 sm:px-6 text-center relative w-full border-b border-neutral-200 mb-4 bg-white/70 backdrop-blur-md shadow-sm">
+      <header className="pt-8 sm:pt-14 pb-4 sm:pb-8 px-4 sm:px-6 text-center relative w-full mb-4">
         {/* Left Logo */}
         <div className="absolute top-4 left-4 sm:top-6 sm:left-8 z-20 h-[72px] w-[144px] sm:h-[120px] sm:w-[192px] flex items-center justify-center overflow-visible">
           <img src="/mba logo.jpg" alt="Logo 1" className="max-h-full max-w-full object-contain mix-blend-multiply" onError={(e) => { e.target.style.display='none'; e.target.parentNode.innerHTML='<span class="text-xs text-black font-bold">Logo 1</span>' }} />
