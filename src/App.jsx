@@ -202,6 +202,20 @@ export default function App() {
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3/4 h-3/4 bg-orange-500/10 blur-[100px] rounded-full pointer-events-none -z-0"></div>
       </main>
 
+      {/* Intro Video */}
+      <section className="w-full max-w-4xl mx-auto px-4 sm:px-6 mb-8 relative z-20">
+        <div className="bg-white/80 backdrop-blur-sm p-2 sm:p-3 rounded-2xl md:rounded-3xl shadow-lg border border-neutral-200">
+          <video 
+            src="/intro.mp4" 
+            controls 
+            className="w-full aspect-video rounded-xl md:rounded-2xl object-cover bg-neutral-900"
+            poster="/mba logo.jpg"
+          >
+            Tarayıcınız video etiketini desteklemiyor.
+          </video>
+        </div>
+      </section>
+
       {/* Footer Navigation */}
       <footer className="w-full pb-8 pt-4 flex flex-col items-center justify-center gap-4 relative z-20">
         <div className="flex items-center justify-center gap-4">
