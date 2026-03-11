@@ -204,7 +204,7 @@ export default function App() {
 
         <button
           onClick={() => setInfoModal('arastirma')}
-          className="text-neutral-500 hover:text-neutral-800 text-sm border-b border-transparent hover:border-neutral-800 transition-colors mt-2"
+          className="cursor-pointer text-neutral-500 hover:text-neutral-800 text-sm border-b border-transparent hover:border-neutral-800 transition-colors mt-2"
         >
           Akademik Araştırma Metni
         </button>
