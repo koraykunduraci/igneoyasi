@@ -79,7 +79,7 @@ const VideoPlayer = ({ data }) => {
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.5 }}
       className={`relative rounded-2xl overflow-hidden bg-black border border-neutral-800 shrink-0 ${
-        data.orientation === 'vertical' ? 'aspect-[9/16] w-full max-w-[340px] mx-auto min-h-[400px]' : 'aspect-video w-full'
+        data.orientation === 'vertical' ? 'aspect-[9/16] w-full max-w-[260px] sm:max-w-[280px] mx-auto' : 'aspect-video w-full'
       } group`}
     >
       <video 
@@ -360,7 +360,7 @@ export default function App() {
                 <X className="w-5 h-5" />
               </button>
 
-              <div className="pt-10 sm:pt-12 px-6 sm:px-8 shrink-0 flex items-center gap-4">
+              <div className="pt-6 sm:pt-8 px-6 sm:px-8 shrink-0 flex items-center gap-4">
                 <motion.div 
                   initial={{ scale: 0, opacity: 0 }}
                   animate={{ scale: 1, opacity: 1 }}
@@ -378,12 +378,12 @@ export default function App() {
                 </motion.h2>
               </div>
 
-              <div className="p-6 sm:p-8 flex flex-col gap-8">
+              <div className="p-6 sm:p-8 pt-4 flex flex-col gap-5">
                 <motion.p 
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.4 }}
-                  className="text-neutral-300 text-lg leading-relaxed mb-4 text-justify"
+                  className="text-neutral-300 text-base sm:text-lg leading-relaxed text-justify"
                 >
                   {activeData.text}
                 </motion.p>
@@ -393,10 +393,10 @@ export default function App() {
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.5 }}
-                    className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-2"
+                    className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-2"
                   >
                     {activeData.oyalar.map((oya, idx) => (
-                      <div key={idx} className="bg-neutral-800/50 border border-neutral-700 p-5 rounded-2xl">
+                      <div key={idx} className="bg-neutral-800/50 border border-neutral-700 p-4 rounded-xl">
                         <h4 className="text-white font-semibold text-lg mb-2 flex items-center gap-2">
                           <div className="w-2 h-2 rounded-full" style={{ backgroundColor: activeData.color }}></div>
                           {oya.isim}
