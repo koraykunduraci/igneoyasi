@@ -8,21 +8,25 @@ const REGION_DATA = {
     name: 'Marmara Bölgesi',
     color: '#3b82f6',
     image: 'https://images.unsplash.com/photo-1541432901042-2d8bd64b4a9b?auto=format&fit=crop&w=800&q=80',
-    text: 'Marmara Bölgesi, Türkiye\'nin kuzeybatısında yer alan, tarihi yarımada ve doğal güzellikleri ile ünlü, sanayi ve kültürel açıdan en gelişmiş bölgesidir. İstanbul gibi metropolleri barındıran bölge, iki kıtayı birbirine bağlar.',
+    text: 'Marmara Bölgesi’nde başörtüsü kenarlarına uygulanan boncuklu oyalar, bölgenin el sanatları mirasının önemli bir parçasını oluşturur. İğne oyasının inceliği ile cam boncuğun estetik görünümünü bir araya getiren bu oya türleri, yalnızca süsleme amaçlı değil; aynı zamanda köklü kültürel inançları, sosyal mesajları ve geleneksel değerleri yansıtan bir iletişim biçimi niteliğindedir. Koruma, sevgi, zarafet, bereket gibi anlamlar taşıyan motifleriyle Marmara’nın boncuklu başörtü oyaları (özellikle Nazar Boncuğu ve Karanfil oyaları), hem çeyiz geleneğinin hem de halk sanatının canlı ve özgün örneklerini günümüze taşımaktadır.',
+    oyalar: [{ isim: 'Nazar Boncuğu Oyası', tanim: 'Halk arasında "kem gözlerden korunma" inancıyla yapılan ve özellikle yazma, yemeni ve çeyizliklerde sık kullanılan bir boncuklu iğne oyası türüdür. Mavi, lacivert, beyaz ve sarı tonlarında nazar boncuğu şeklinde cam boncuklar kullanılır.' }, { isim: 'Karanfil Oyası', tanim: 'Tülbent kenarlarına işlenen ve karanfil çiçeğini andıran boncuklu ya da iğne oyası motifidir. Sevgi, zarafet ve kadın emeğini temsil eder. Bazı yörelerde "karanfil gibi narin kız" anlamında hediye edilir.' }],
     videos: [{ src: '/marmara nazar.mp4', orientation: 'horizontal' }]
   },
   'ege': {
     name: 'Ege Bölgesi',
     color: '#10b981',
     image: 'https://images.unsplash.com/photo-1502095819777-62f79fb650fe?auto=format&fit=crop&w=800&q=80',
-    text: 'Ege Bölgesi, zeytin ağaçları, muhteşem koyları ve antik kentleriyle Türkiye\'nin tatil cennetidir. Efes Antik Kenti ve travertenler gibi dünya mirası zenginliklerine sahiptir.',
+    text: 'Ege Bölgesi başörtülerinde kullanılan boncuk oyaları, bölgenin geleneksel giyim kültürünün estetik ve sembolik bir parçasıdır. Ege’nin doğal ve kültürel yapısı, oya motiflerine zeytin dalı, üzüm salkımı, papatya, deniz kabuğu gibi temalarla yansır. Canlı ve açık tonların hâkim olduğu turkuaz, pembe, sarı ve yeşil renkler; parlak cam ya da inci görünümlü boncuklarla birlikte kullanılarak başörtülerine hareketli ve gösterişli bir görünüm kazandırır.',
+    oyalar: [{ isim: 'Zeytin Dalı Oyası', tanim: 'Ege\'nin simgesi olan zeytin ağacından ilham alınarak yapılan, özellikle tülbent ve yazma kenarlarını süsleyen geleneksel bir iğne/boncuk oyası motifidir. Barış, bereket, umut ve direnç simgesidir.' }, { isim: 'Gelin Buketi Oyası', tanim: 'Adını düğünlerde gelinlerin taşıdığı renkli çiçek demetlerinden alır. Çeşitli çiçek motiflerinin bir araya getirilmesiyle oluşturulur. Mutluluk, sevgi, neşe ve yeni başlangıçlar anlamı taşır.' }],
     videos: [{ src: '/ege pullu oya.mp4', orientation: 'vertical' }]
   },
+
   'akdeniz': {
     name: 'Akdeniz Bölgesi',
     color: '#ef4444',
     image: 'https://images.unsplash.com/photo-1534063230623-ac4bc8586ea2?auto=format&fit=crop&w=800&q=80',
-    text: 'Akdeniz Bölgesi, uçsuz bucaksız plajları, Toros Dağları ve sıcacık iklimiyle harika bir bölgedir. Turunçgil bahçeleri ve tarihi kalıntılarıyla eşsiz bir deneyim sunar.',
+    text: 'Akdeniz Bölgesinde boncuk oyalarının iki ve üç boyutlu olarak yapıldığı, en çok tülbent kenarlarına dikildiği ve başörtüsü olarak kullanıldığı görülmektedir. Boncukla yapılan oyalarda en çok tığ ve iğne oyası teknikleri uygulanırken farklı oranlarda mekik, firkete ve şişle yapılan temel teknikler de kullanılmaktadır.',
+    oyalar: [{ isim: 'Gül Oyası', tanim: 'Adını güle benzeyen desenlerinden alır. Gül motifi, sevgi, zarafet ve güzelliği simgeler. Kırmızı, pembe, mor renkleriyle narin, ince bir kişilik mesajı ileten bir oyadır.' }, { isim: 'Kafes (File) Oyası', tanim: 'Temel yapısı, düzenli kare boşluklar oluşturularak örülür. Üst kısmına genellikle boncuk, pul veya küçük motifler (çiçek, meyve) işlenir. Sabır ve zarafet simgesi olarak görülür.' }],
     videos: [
       { src: '/akdeniz halka boncuk.mp4', orientation: 'vertical' },
       { src: '/akdeniz yıldız oyası.mp4', orientation: 'vertical' }
@@ -32,27 +36,31 @@ const REGION_DATA = {
     name: 'İç Anadolu Bölgesi',
     color: '#f59e0b',
     image: 'https://images.unsplash.com/photo-1563212046-24eeb64f51e1?auto=format&fit=crop&w=800&q=80',
-    text: 'İç Anadolu, bozkırın ortasında yükselen Kapadokya peri bacaları ve köklü tarihi ile medeniyetin beşiğidir. Türkiye\'nin tahıl ambarı olarak da bilinir.',
+    text: 'İç Anadolu Bölgesi’nde başörtüler (yazma, tülbent) çoğunlukla sade zemin üzerine işlenen boncuk oyalarıyla süslenmektedir. Bölgenin kültürel yapısında sadelik, dayanıklılık ve zarafet ön planda olduğu için oya motifleri de genellikle küçük, düzenli ve gösterişten uzak tasarımlardan oluşur. Boncuklar, iplik üzerinde ritmik bir şekilde dizilerek küçük çiçek, tomurcuk veya damla biçimli motifler oluşturur.',
+    oyalar: [{ isim: 'Çıtı Pıtı Oyası', tanim: 'Adını küçük ve zarif motiflerinden alır. Minik boncuklar ya da iplerle yapılan küçük çiçek, tomurcuk ya da damla şekilleri içerir. İncelik, sadelik ve zarafetin simgesidir.' }, { isim: 'Biber Oyası', tanim: 'Boncuklarla biber şekline benzeyen ince ve sivri form verilir. Sadece bereket ve üretkenliği değil, sivri ucu sebebiyle "lafını esirgemeyen gelin" gibi karakter mesajları da taşır.' }],
     videos: [{ src: '/icanadolu citi piti.mp4', orientation: 'horizontal' }]
   },
   'karadeniz': {
     name: 'Karadeniz Bölgesi',
     color: '#06b6d4',
     image: 'https://images.unsplash.com/photo-1587313361138-03828949826f?auto=format&fit=crop&w=800&q=80',
-    text: 'Karadeniz Bölgesi, yemyeşil doğası, hırçın denizi ve yaylalarıyla büyüleyici bir atmosfere sahiptir. Çay ve fındık bahçeleriyle meşhurdur.',
+    text: 'Karadeniz bölgesinin hanımları, birbirinden farklı iğne oyaları ile sezonun renklendirilmesinde büyük katkıda bulunmaya devam ediyorlar. Karadeniz iğne oyası denince hemen aklımıza alnının önünde boncuk süslemeli yazmalar gelir. Görünürde güzel olduğu kadar yapımı da bir o kadar heyecan vericidir.',
+    oyalar: [{ isim: 'Horon Oyası', tanim: 'Adını Karadeniz’in en bilinen coşkulu halk dansı olan horondan alır. Horonda el ele dizilen insanlar gibi oyadaki motifler de sıralı, ritmik ve canlı şekilde dizilir.' }, { isim: 'Dere Başı Pıtırak Oyası', tanim: 'Karadeniz’in zengin doğasından esinlenerek geliştirilmiş, dere kenarlarında yetişen pıtırak bitkisinden adını alan oya modelidir. Tıpkı pıtırak gibi bir yere tutunup kopmayan güçlü kadını simgeler.' }],
     videos: [{ src: '/karadeniz pullu boncuk.mp4', orientation: 'vertical' }]
   },
   'dogu-anadolu': {
     name: 'Doğu Anadolu Bölgesi',
     color: '#8b5cf6',
     image: 'https://images.unsplash.com/photo-1596489379683-144f83733075?auto=format&fit=crop&w=800&q=80',
-    text: 'Doğu Anadolu Bölgesi, sarp dağları, karla kaplı zirveleri ve tarihi kaleleriyle mistik bir diyardır. Türkiye\'nin en büyük gölü olan Van Gölü buradadır.'
+    text: 'Anadolu\'nun Doğu bölgelerinde boncuk oyaları geleneksel Türk kültürünün önemli bir parçası olarak kabul edilmektedir. Bu sanat, Anadolu kadınının yüzyıllar öncesinden bugüne taşıdığı estetikleri yansıtmaktadır. Tığ, mekik, firkete, koza, yün, mum, dokuma gibi tekniklerle, doğanın zengin dokusundan ilhamla işlenir.',
+    oyalar: [{ isim: 'Van Gölü Dalgası Oyası', tanim: 'Adını Türkiye’nin en büyük gölü olan Van Gölü’nün dalgalarından alan bu model, dalga formunu andıran kıvrımlı, sıralı motifler barındırır. Sabır, huzur ve süreklilik temalarını simgeler.' }, { isim: 'Fıstık Oyası', tanim: '"Fıstık" adı verilen küçük, top şeklinde motiflerden oluşan sağlam bir oya türüdür. Bereket, zenginlik ve kadının emeğini taşır.' }]
   },
   'guneydogu-anadolu': {
     name: 'Güneydoğu Anadolu Bölgesi',
     color: '#ec4899',
     image: 'https://images.unsplash.com/photo-1601004149632-1f4864c39df4?auto=format&fit=crop&w=800&q=80',
-    text: 'Güneydoğu Anadolu, Mezopotamya uygarlıklarına ev sahipliği yapan, taş evleri ve enfes mutfağıyla eşsizdir. Zeugma ve Göbeklitepe gibi dünyanın en eski kalıntılarına ev sahipliği yapar.'
+    text: 'Güneydoğu Anadolu Bölgesi’nde boncuk oyaları canlı ve parlak renklerin koyu tonlardaki başörtüsü kenarlarına ritmik bir düzen içinde işlenmesiyle oluşturulur. Motiflerde bereketi simgeleyen nar, buğday başağı, yıldız kullanılırken; nazardan korunmayı temsil eden göz motifi de görülür. Prestij unsurudur; düğün ve kına gecelerinde geleneğin en büyük göstergesidir.',
+    oyalar: [{ isim: 'Mardin Taşı Oyası', tanim: 'Adını Mardin evlerine ilham veren meşhur Sarı Kalker Taşı’ndan alır. Sarı, krem, bej tonlarıyla sadelik ve asaletin simgesidir. Kadının sabrı ve geleneklerine bağlılığını temsil eder.' }, { isim: 'Halay Boncuğu Oyası', tanim: 'Adını halk dansı halaydan alır. İnsanların el ele tutuşarak oluşturduğu düzenli sıra ve ritmik hareketler bu oyaya esin kaynağı olmuştur. Toplumsal dayanışma, birlik ve kutlamaların simgesidir.' }]
   }
 };
 
@@ -375,10 +383,31 @@ export default function App() {
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.4 }}
-                  className="text-neutral-300 text-lg leading-relaxed"
+                  className="text-neutral-300 text-lg leading-relaxed mb-4"
                 >
                   {activeData.text}
                 </motion.p>
+
+                {activeData.oyalar && activeData.oyalar.length > 0 && (
+                  <motion.div 
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.5 }}
+                    className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-2"
+                  >
+                    {activeData.oyalar.map((oya, idx) => (
+                      <div key={idx} className="bg-neutral-800/50 border border-neutral-700 p-5 rounded-2xl">
+                        <h4 className="text-white font-semibold text-lg mb-2 flex items-center gap-2">
+                          <div className="w-2 h-2 rounded-full" style={{ backgroundColor: activeData.color }}></div>
+                          {oya.isim}
+                        </h4>
+                        <p className="text-neutral-400 text-sm leading-relaxed">
+                          {oya.tanim}
+                        </p>
+                      </div>
+                    ))}
+                  </motion.div>
+                )}
 
                 {activeData.videos && activeData.videos.length > 0 && (
                   <div className={`grid grid-cols-1 ${activeData.videos.length > 1 ? 'md:grid-cols-2' : ''} gap-6 w-full items-center`}>
