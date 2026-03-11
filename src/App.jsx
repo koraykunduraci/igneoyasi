@@ -149,7 +149,7 @@ export default function App() {
 
           {/* Central Text Block */}
           <div className="flex flex-col items-center justify-center text-center flex-1">
-            <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-extrabold text-[#111827] tracking-tight uppercase mb-1">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight bg-gradient-to-r from-orange-600 via-rose-600 to-purple-600 bg-clip-text text-transparent pb-1 drop-shadow-sm uppercase mb-1">
               İĞNENİN UCUNDAKİ SESSİZ DİL
             </h1>
             <h2 className="text-sm md:text-base lg:text-lg font-semibold text-[#374151] mb-2 leading-snug">
