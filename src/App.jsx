@@ -87,7 +87,8 @@ export default function App() {
       className="min-h-screen text-neutral-900 font-sans selection:bg-orange-500 selection:text-white"
       style={{
         backgroundColor: '#f8fafc',
-        backgroundImage: `url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%2364748b' fill-opacity='0.08' fill-rule='evenodd'%3E%3Cpath d='M0 40L40 0H20L0 20M40 40V20L20 40'/%3E%3C/g%3E%3C/svg%3E")`,
+        backgroundImage: `url("data:image/svg+xml,%3Csvg width='240' height='240' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%2364748b' fill-opacity='0.5' font-family='Segoe UI Historic, sans-serif'%3E%3Ctext x='20' y='60' font-size='28' transform='rotate(-15 40 40)'%3E𐱅 𐰇 𐰼 𐰰%3C/text%3E%3Ctext x='120' y='160' font-size='26' transform='rotate(15 130 150)'%3E𐱅 𐰭 𐰼 𐰃%3C/text%3E%3Ctext x='160' y='40' font-size='22' transform='rotate(-35 160 40)'%3E𐰆 𐰉 𐰭%3C/text%3E%3Ctext x='30' y='200' font-size='24' transform='rotate(25 40 180)'%3E𐰴 𐰣%3C/text%3E%3C/g%3E%3C/svg%3E")`,
+        backgroundSize: '240px 240px'
       }}
     >
       
