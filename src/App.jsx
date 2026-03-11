@@ -1,15 +1,230 @@
-import { useState } from 'react'
-import './App.css'
+import React, { useState, useRef } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { X, Play, MapPin } from 'lucide-react';
+import TurkeyMap from './MapComponent';
 
-function App() {
+const REGION_DATA = {
+  'marmara': {
+    name: 'Marmara Bölgesi',
+    color: '#3b82f6',
+    image: 'https://images.unsplash.com/photo-1541432901042-2d8bd64b4a9b?auto=format&fit=crop&w=800&q=80',
+    text: 'Marmara Bölgesi, Türkiye\'nin kuzeybatısında yer alan, tarihi yarımada ve doğal güzellikleri ile ünlü, sanayi ve kültürel açıdan en gelişmiş bölgesidir. İstanbul gibi metropolleri barındıran bölge, iki kıtayı birbirine bağlar.',
+    video: 'https://vjs.zencdn.net/v/oceans.mp4'
+  },
+  'ege': {
+    name: 'Ege Bölgesi',
+    color: '#10b981',
+    image: 'https://images.unsplash.com/photo-1502095819777-62f79fb650fe?auto=format&fit=crop&w=800&q=80',
+    text: 'Ege Bölgesi, zeytin ağaçları, muhteşem koyları ve antik kentleriyle Türkiye\'nin tatil cennetidir. Efes Antik Kenti ve travertenler gibi dünya mirası zenginliklerine sahiptir.',
+    video: 'https://vjs.zencdn.net/v/oceans.mp4'
+  },
+  'akdeniz': {
+    name: 'Akdeniz Bölgesi',
+    color: '#ef4444',
+    image: 'https://images.unsplash.com/photo-1534063230623-ac4bc8586ea2?auto=format&fit=crop&w=800&q=80',
+    text: 'Akdeniz Bölgesi, uçsuz bucaksız plajları, Toros Dağları ve sıcacık iklimiyle harika bir bölgedir. Turunçgil bahçeleri ve tarihi kalıntılarıyla eşsiz bir deneyim sunar.',
+    video: 'https://vjs.zencdn.net/v/oceans.mp4'
+  },
+  'ic-anadolu': {
+    name: 'İç Anadolu Bölgesi',
+    color: '#f59e0b',
+    image: 'https://images.unsplash.com/photo-1563212046-24eeb64f51e1?auto=format&fit=crop&w=800&q=80',
+    text: 'İç Anadolu, bozkırın ortasında yükselen Kapadokya peri bacaları ve köklü tarihi ile medeniyetin beşiğidir. Türkiye\'nin tahıl ambarı olarak da bilinir.',
+    video: 'https://vjs.zencdn.net/v/oceans.mp4'
+  },
+  'karadeniz': {
+    name: 'Karadeniz Bölgesi',
+    color: '#06b6d4',
+    image: 'https://images.unsplash.com/photo-1587313361138-03828949826f?auto=format&fit=crop&w=800&q=80',
+    text: 'Karadeniz Bölgesi, yemyeşil doğası, hırçın denizi ve yaylalarıyla büyüleyici bir atmosfere sahiptir. Çay ve fındık bahçeleriyle meşhurdur.',
+    video: 'https://vjs.zencdn.net/v/oceans.mp4'
+  },
+  'dogu-anadolu': {
+    name: 'Doğu Anadolu Bölgesi',
+    color: '#8b5cf6',
+    image: 'https://images.unsplash.com/photo-1596489379683-144f83733075?auto=format&fit=crop&w=800&q=80',
+    text: 'Doğu Anadolu Bölgesi, sarp dağları, karla kaplı zirveleri ve tarihi kaleleriyle mistik bir diyardır. Türkiye\'nin en büyük gölü olan Van Gölü buradadır.',
+    video: 'https://vjs.zencdn.net/v/oceans.mp4'
+  },
+  'guneydogu-anadolu': {
+    name: 'Güneydoğu Anadolu Bölgesi',
+    color: '#ec4899',
+    image: 'https://images.unsplash.com/photo-1601004149632-1f4864c39df4?auto=format&fit=crop&w=800&q=80',
+    text: 'Güneydoğu Anadolu, Mezopotamya uygarlıklarına ev sahipliği yapan, taş evleri ve enfes mutfağıyla eşsizdir. Zeugma ve Göbeklitepe gibi dünyanın en eski kalıntılarına ev sahipliği yapar.',
+    video: 'https://vjs.zencdn.net/v/oceans.mp4'
+  }
+};
+
+export default function App() {
+  const [activeRegion, setActiveRegion] = useState(null);
+  const [isVideoPlaying, setIsVideoPlaying] = useState(false);
+  const videoRef = useRef(null);
+
+  const activeData = activeRegion ? REGION_DATA[activeRegion] : null;
+
+  const handleRegionClick = (region) => {
+    setActiveRegion(region);
+    setIsVideoPlaying(false);
+  };
+
+  const handleClose = () => {
+    setActiveRegion(null);
+    setIsVideoPlaying(false);
+    if (videoRef.current) {
+      videoRef.current.pause();
+    }
+  };
+
+  const handlePlayVideo = () => {
+    setIsVideoPlaying(true);
+    if (videoRef.current) {
+      videoRef.current.play();
+    }
+  };
+
   return (
-    <div className="w-full min-h-screen bg-neutral-900 text-white flex flex-col items-center justify-center">
-      <h1 className="text-4xl font-bold mb-4 text-emerald-400">Türkiye Haritası Projesi</h1>
-      <p className="text-neutral-400 max-w-lg text-center">
-        Proje başarıyla oluşturuldu! Lütfen kullanacağın fotoğraf ve videoları bu klasörün içine (örneğin <code className="bg-neutral-800 px-2 py-1 rounded">public</code> klasörüne) yükle.
-      </p>
-    </div>
-  )
-}
+    <div className="min-h-screen bg-neutral-950 text-neutral-100 font-sans selection:bg-indigo-500 selection:text-white">
+      
+      {/* Header */}
+      <header className="pt-12 pb-8 px-6 text-center">
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+        >
+          <div className="flex items-center justify-center gap-3 mb-4">
+            <MapPin className="w-8 h-8 text-indigo-400" />
+            <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">
+              Türkiye Keşif Haritası
+            </h1>
+          </div>
+          <p className="text-neutral-400 text-lg max-w-xl mx-auto">
+            Yedi bölgenin eşsiz güzelliklerini, kültürünü ve tarihini harita üzerinden keşfedin.
+          </p>
+        </motion.div>
+      </header>
 
-export default App
+      {/* Main Map Content */}
+      <main className="px-6 py-10 relative">
+        <motion.div 
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1, delay: 0.2 }}
+          className="relative z-10"
+        >
+          <TurkeyMap 
+            onRegionClick={handleRegionClick} 
+            activeRegion={activeRegion}
+            regionData={REGION_DATA}
+          />
+        </motion.div>
+        
+        {/* Glow effect behind map */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3/4 h-3/4 bg-indigo-500/20 blur-[120px] rounded-full pointer-events-none -z-0"></div>
+      </main>
+
+      {/* Modal Overlay */}
+      <AnimatePresence>
+        {activeRegion && activeData && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 md:p-12">
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={handleClose}
+              className="absolute inset-0 bg-black/60 backdrop-blur-sm"
+            />
+            
+            <motion.div
+              layoutId={`region-${activeRegion}`}
+              initial={{ opacity: 0, scale: 0.9, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.9, y: 20 }}
+              transition={{ type: "spring", damping: 25, stiffness: 300 }}
+              className="relative w-full max-w-4xl max-h-[90vh] bg-neutral-900 border border-neutral-800 rounded-3xl shadow-2xl overflow-y-auto overflow-x-hidden flex flex-col z-10"
+              style={{ boxShadow: `0 20px 40px -10px ${activeData.color}40` }}
+            >
+              <button 
+                onClick={handleClose}
+                className="absolute top-4 right-4 z-20 p-2 bg-black/50 hover:bg-black/70 text-white rounded-full backdrop-blur-md transition-colors"
+                aria-label="Kapat"
+              >
+                <X className="w-5 h-5" />
+              </button>
+
+              <div className="relative h-64 sm:h-80 w-full shrink-0">
+                <img 
+                  src={activeData.image} 
+                  alt={activeData.name} 
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-neutral-900 via-neutral-900/40 to-transparent" />
+                <div className="absolute bottom-0 left-0 p-6 sm:p-8">
+                  <motion.div 
+                    initial={{ x: -20, opacity: 0 }}
+                    animate={{ x: 0, opacity: 1 }}
+                    transition={{ delay: 0.2 }}
+                    className="flex items-center gap-3 mb-2"
+                  >
+                    <div className="w-3 h-3 rounded-full" style={{ backgroundColor: activeData.color }}></div>
+                    <span style={{ color: activeData.color }} className="font-semibold tracking-wider uppercase text-sm">
+                      Bölgelerimiz
+                    </span>
+                  </motion.div>
+                  <motion.h2 
+                    initial={{ y: 20, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    transition={{ delay: 0.3 }}
+                    className="text-3xl sm:text-4xl font-bold text-white"
+                  >
+                    {activeData.name}
+                  </motion.h2>
+                </div>
+              </div>
+
+              <div className="p-6 sm:p-8 flex flex-col gap-8">
+                <motion.p 
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.4 }}
+                  className="text-neutral-300 text-lg leading-relaxed"
+                >
+                  {activeData.text}
+                </motion.p>
+
+                <motion.div 
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.5 }}
+                  className="relative rounded-2xl overflow-hidden bg-black border border-neutral-800 aspect-video group"
+                >
+                  <video 
+                    ref={videoRef}
+                    src={activeData.video} 
+                    className="w-full h-full object-cover"
+                    controls={isVideoPlaying}
+                    playsInline
+                    onPause={() => setIsVideoPlaying(false)}
+                    onPlay={() => setIsVideoPlaying(true)}
+                  />
+                  
+                  {!isVideoPlaying && (
+                    <div className="absolute inset-0 flex items-center justify-center bg-black/40 group-hover:bg-black/20 transition-colors duration-300">
+                      <button 
+                        onClick={handlePlayVideo}
+                        className="w-20 h-20 flex items-center justify-center bg-white/10 hover:bg-white/20 hover:scale-110 backdrop-blur-md border border-white/20 rounded-full transition-all duration-300 text-white"
+                      >
+                        <Play className="w-8 h-8 ml-1" fill="currentColor" />
+                      </button>
+                    </div>
+                  )}
+                </motion.div>
+              </div>
+
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+}
