@@ -116,8 +116,8 @@ export default function App() {
               İğnenin Ucundaki Sessiz Dil
             </h1>
           </div>
-          <p className="text-neutral-600 text-base sm:text-lg max-w-xl mx-auto px-2 font-medium">
-            Anadolu'nun eşsiz motiflerini, kültürünü ve tarihini harita üzerinden keşfedin.
+          <p className="text-neutral-600 text-base sm:text-lg max-w-2xl mx-auto px-2 font-medium">
+            Sözün bittiği yerde iğnenin konuştuğu; Anadolu kadınlarının sevincini, hüznünü ve umudunu ilmek ilmek işlediği oya kültürünü haritada keşfedin.
           </p>
         </motion.div>
       </header>
