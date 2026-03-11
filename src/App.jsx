@@ -87,8 +87,8 @@ export default function App() {
       className="min-h-screen text-neutral-900 font-sans selection:bg-orange-500 selection:text-white"
       style={{
         backgroundColor: '#f8fafc',
-        backgroundImage: `url("data:image/svg+xml,%3Csvg width='240' height='240' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%2364748b' fill-opacity='0.5' font-family='Segoe UI Historic, sans-serif'%3E%3Ctext x='20' y='60' font-size='28' transform='rotate(-15 40 40)'%3E𐱅 𐰇 𐰼 𐰰%3C/text%3E%3Ctext x='120' y='160' font-size='26' transform='rotate(15 130 150)'%3E𐱅 𐰭 𐰼 𐰃%3C/text%3E%3Ctext x='160' y='40' font-size='22' transform='rotate(-35 160 40)'%3E𐰆 𐰉 𐰭%3C/text%3E%3Ctext x='30' y='200' font-size='24' transform='rotate(25 40 180)'%3E𐰴 𐰣%3C/text%3E%3C/g%3E%3C/svg%3E")`,
-        backgroundSize: '240px 240px'
+        backgroundImage: `url("data:image/svg+xml,%3Csvg width='600' height='250' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%2394a3b8' fill-opacity='0.5' font-family='Segoe UI Historic, sans-serif' font-size='24' letter-spacing='20'%3E%3Ctext x='-50' y='40'%3E𐰁 𐰂 𐰃 𐰄 𐰅 𐰆 𐰇 𐰈 𐰉 𐱅 𐰇 𐰼 𐰰 𐰊 𐰋 𐰌 𐰍 𐰎 𐰏 𐰐 𐰑 𐰒 𐰓 𐰔%3C/text%3E%3Ctext x='-10' y='90'%3E𐰕 𐰖 𐰗 𐰘 𐰙 𐰚 𐰛 𐰜 𐰝 𐰞 𐰟 𐰠 𐰡 𐰢 𐰣 𐰤 𐰥 𐰦 𐰧 𐰨 𐰩 𐰪 𐰫%3C/text%3E%3Ctext x='-80' y='140'%3E𐰬 𐰭 𐰮 𐰯 𐰰 𐰱 𐰲 𐰳 𐰴 𐰣 𐰵 𐰶 𐰷 𐰸 𐰹 𐰺 𐰻 𐰼 𐰽 𐰾 𐰿%3C/text%3E%3Ctext x='10' y='190'%3E𐱀 𐱁 𐱂 𐱃 𐱄 𐱅 𐱆 𐱇 𐱈 𐱅 𐰭 𐰼 𐰃 𐰁 𐰂 𐰃 𐰄 𐰅 𐰆 𐰇 𐰈 𐰉 𐰊%3C/text%3E%3Ctext x='-30' y='240'%3E𐰋 𐰌 𐰍 𐰎 𐰏 𐰐 𐰑 𐰒 𐰓 𐰔 𐰕 𐰖 𐰗 𐰘 𐰙 𐰚 𐰛 𐰜 𐰝 𐰞 𐰟 𐰠 𐰡%3C/text%3E%3C/g%3E%3C/svg%3E")`,
+        backgroundSize: '600px 250px'
       }}
     >
       
