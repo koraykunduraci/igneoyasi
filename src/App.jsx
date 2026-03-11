@@ -3,64 +3,46 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { X, Play, BookOpen, FileText } from 'lucide-react';
 import TurkeyMap from './MapComponent';
 
-const REGION_DATA = {
+import { LOCALES, OYA_DATA } from './locales';
+
+const REGION_MEDIA = {
   'marmara': {
-    name: 'Marmara Bölgesi',
     color: '#3b82f6',
     image: 'https://images.unsplash.com/photo-1541432901042-2d8bd64b4a9b?auto=format&fit=crop&w=800&q=80',
-    text: 'Marmara Bölgesi’nde başörtüsü kenarlarına uygulanan boncuklu oyalar, bölgenin el sanatları mirasının önemli bir parçasını oluşturur. İğne oyasının inceliği ile cam boncuğun estetik görünümünü bir araya getiren bu oya türleri, yalnızca süsleme amaçlı değil; aynı zamanda köklü kültürel inançları, sosyal mesajları ve geleneksel değerleri yansıtan bir iletişim biçimi niteliğindedir. Koruma, sevgi, zarafet, bereket gibi anlamlar taşıyan motifleriyle Marmara’nın boncuklu başörtü oyaları (özellikle Nazar Boncuğu ve Karanfil oyaları), hem çeyiz geleneğinin hem de halk sanatının canlı ve özgün örneklerini günümüze taşımaktadır.',
-    oyalar: [{ isim: 'Nazar Boncuğu Oyası', tanim: 'Halk arasında "kem gözlerden korunma" inancıyla yapılan ve özellikle yazma, yemeni ve çeyizliklerde sık kullanılan bir boncuklu iğne oyası türüdür. Mavi, lacivert, beyaz ve sarı tonlarında nazar boncuğu şeklinde cam boncuklar kullanılır.', image: '/oya_image_15.jpeg' }, { isim: 'Karanfil Oyası', tanim: 'Tülbent kenarlarına işlenen ve karanfil çiçeğini andıran boncuklu ya da iğne oyası motifidir. Sevgi, zarafet ve kadın emeğini temsil eder. Bazı yörelerde "karanfil gibi narin kız" anlamında hediye edilir.', image: '/oya_image_16.jpeg' }],
     videos: [{ src: '/marmara nazar.mp4', orientation: 'horizontal' }]
   },
   'ege': {
-    name: 'Ege Bölgesi',
     color: '#10b981',
     image: 'https://images.unsplash.com/photo-1502095819777-62f79fb650fe?auto=format&fit=crop&w=800&q=80',
-    text: 'Ege Bölgesi başörtülerinde kullanılan boncuk oyaları, bölgenin geleneksel giyim kültürünün estetik ve sembolik bir parçasıdır. Ege’nin doğal ve kültürel yapısı, oya motiflerine zeytin dalı, üzüm salkımı, papatya, deniz kabuğu gibi temalarla yansır. Canlı ve açık tonların hâkim olduğu turkuaz, pembe, sarı ve yeşil renkler; parlak cam ya da inci görünümlü boncuklarla birlikte kullanılarak başörtülerine hareketli ve gösterişli bir görünüm kazandırır.',
-    oyalar: [{ isim: 'Zeytin Dalı Oyası', tanim: 'Ege\'nin simgesi olan zeytin ağacından ilham alınarak yapılan, özellikle tülbent ve yazma kenarlarını süsleyen geleneksel bir iğne/boncuk oyası motifidir. Barış, bereket, umut ve direnç simgesidir.', image: '/oya_image_7.jpeg' }, { isim: 'Gelin Buketi Oyası', tanim: 'Adını düğünlerde gelinlerin taşıdığı renkli çiçek demetlerinden alır. Çeşitli çiçek motiflerinin bir araya getirilmesiyle oluşturulur. Mutluluk, sevgi, neşe ve yeni başlangıçlar anlamı taşır.', image: '/oya_image_8.jpeg' }],
     videos: [{ src: '/ege pullu oya.mp4', orientation: 'vertical' }]
   },
-
   'akdeniz': {
-    name: 'Akdeniz Bölgesi',
     color: '#ef4444',
     image: 'https://images.unsplash.com/photo-1534063230623-ac4bc8586ea2?auto=format&fit=crop&w=800&q=80',
-    text: 'Akdeniz Bölgesinde boncuk oyalarının iki ve üç boyutlu olarak yapıldığı, en çok tülbent kenarlarına dikildiği ve başörtüsü olarak kullanıldığı görülmektedir. Boncukla yapılan oyalarda en çok tığ ve iğne oyası teknikleri uygulanırken farklı oranlarda mekik, firkete ve şişle yapılan temel teknikler de kullanılmaktadır.',
-    oyalar: [{ isim: 'Gül Oyası', tanim: 'Adını güle benzeyen desenlerinden alır. Gül motifi, sevgi, zarafet ve güzelliği simgeler. Kırmızı, pembe, mor renkleriyle narin, ince bir kişilik mesajı ileten bir oyadır.', image: '/oya_image_3.jpeg' }, { isim: 'Kafes (File) Oyası', tanim: 'Temel yapısı, düzenli kare boşluklar oluşturularak örülür. Üst kısmına genellikle boncuk, pul veya küçük motifler (çiçek, meyve) işlenir. Sabır ve zarafet simgesi olarak görülür.', image: '/oya_image_4.jpeg' }],
     videos: [
       { src: '/akdeniz halka boncuk.mp4', orientation: 'vertical' },
       { src: '/akdeniz yıldız oyası.mp4', orientation: 'vertical' }
     ]
   },
   'ic-anadolu': {
-    name: 'İç Anadolu Bölgesi',
     color: '#f59e0b',
     image: 'https://images.unsplash.com/photo-1563212046-24eeb64f51e1?auto=format&fit=crop&w=800&q=80',
-    text: 'İç Anadolu Bölgesi’nde başörtüler (yazma, tülbent) çoğunlukla sade zemin üzerine işlenen boncuk oyalarıyla süslenmektedir. Bölgenin kültürel yapısında sadelik, dayanıklılık ve zarafet ön planda olduğu için oya motifleri de genellikle küçük, düzenli ve gösterişten uzak tasarımlardan oluşur. Boncuklar, iplik üzerinde ritmik bir şekilde dizilerek küçük çiçek, tomurcuk veya damla biçimli motifler oluşturur.',
-    oyalar: [{ isim: 'Çıtı Pıtı Oyası', tanim: 'Adını küçük ve zarif motiflerinden alır. Minik boncuklar ya da iplerle yapılan küçük çiçek, tomurcuk ya da damla şekilleri içerir. İncelik, sadelik ve zarafetin simgesidir.', image: '/oya_image_11.jpeg' }, { isim: 'Biber Oyası', tanim: 'Boncuklarla biber şekline benzeyen ince ve sivri form verilir. Sadece bereket ve üretkenliği değil, sivri ucu sebebiyle "lafını esirgemeyen gelin" gibi karakter mesajları da taşır.', image: '/oya_image_12.jpeg' }],
     videos: [{ src: '/icanadolu citi piti.mp4', orientation: 'horizontal' }]
   },
   'karadeniz': {
-    name: 'Karadeniz Bölgesi',
     color: '#06b6d4',
     image: 'https://images.unsplash.com/photo-1587313361138-03828949826f?auto=format&fit=crop&w=800&q=80',
-    text: 'Karadeniz bölgesinin hanımları, birbirinden farklı iğne oyaları ile sezonun renklendirilmesinde büyük katkıda bulunmaya devam ediyorlar. Karadeniz iğne oyası denince hemen aklımıza alnının önünde boncuk süslemeli yazmalar gelir. Görünürde güzel olduğu kadar yapımı da bir o kadar heyecan vericidir.',
-    oyalar: [{ isim: 'Horon Oyası', tanim: 'Adını Karadeniz’in en bilinen coşkulu halk dansı olan horondan alır. Horonda el ele dizilen insanlar gibi oyadaki motifler de sıralı, ritmik ve canlı şekilde dizilir.', image: '/oya_image_13.jpeg' }, { isim: 'Dere Başı Pıtırak Oyası', tanim: 'Karadeniz’in zengin doğasından esinlenerek geliştirilmiş, dere kenarlarında yetişen pıtırak bitkisinden adını alan oya modelidir. Tıpkı pıtırak gibi bir yere tutunup kopmayan güçlü kadını simgeler.', image: '/oya_image_14.jpeg' }],
     videos: [{ src: '/karadeniz pullu boncuk.mp4', orientation: 'vertical' }]
   },
   'dogu-anadolu': {
-    name: 'Doğu Anadolu Bölgesi',
     color: '#8b5cf6',
     image: 'https://images.unsplash.com/photo-1596489379683-144f83733075?auto=format&fit=crop&w=800&q=80',
-    text: 'Anadolu\'nun Doğu bölgelerinde boncuk oyaları geleneksel Türk kültürünün önemli bir parçası olarak kabul edilmektedir. Bu sanat, Anadolu kadınının yüzyıllar öncesinden bugüne taşıdığı estetikleri yansıtmaktadır. Tığ, mekik, firkete, koza, yün, mum, dokuma gibi tekniklerle, doğanın zengin dokusundan ilhamla işlenir.',
-    oyalar: [{ isim: 'Van Gölü Dalgası Oyası', tanim: 'Adını Türkiye’nin en büyük gölü olan Van Gölü’nün dalgalarından alan bu model, dalga formunu andıran kıvrımlı, sıralı motifler barındırır. Sabır, huzur ve süreklilik temalarını simgeler.', image: '/oya_image_5.jpeg' }, { isim: 'Fıstık Oyası', tanim: '"Fıstık" adı verilen küçük, top şeklinde motiflerden oluşan sağlam bir oya türüdür. Bereket, zenginlik ve kadının emeğini taşır.', image: '/oya_image_6.jpeg' }]
+    videos: []
   },
   'guneydogu-anadolu': {
-    name: 'Güneydoğu Anadolu Bölgesi',
     color: '#ec4899',
     image: 'https://images.unsplash.com/photo-1601004149632-1f4864c39df4?auto=format&fit=crop&w=800&q=80',
-    text: 'Güneydoğu Anadolu Bölgesi’nde boncuk oyaları canlı ve parlak renklerin koyu tonlardaki başörtüsü kenarlarına ritmik bir düzen içinde işlenmesiyle oluşturulur. Motiflerde bereketi simgeleyen nar, buğday başağı, yıldız kullanılırken; nazardan korunmayı temsil eden göz motifi de görülür. Prestij unsurudur; düğün ve kına gecelerinde geleneğin en büyük göstergesidir.',
-    oyalar: [{ isim: 'Mardin Taşı Oyası', tanim: 'Adını Mardin evlerine ilham veren meşhur Sarı Kalker Taşı’ndan alır. Sarı, krem, bej tonlarıyla sadelik ve asaletin simgesidir. Kadının sabrı ve geleneklerine bağlılığını temsil eder.', image: '/oya_image_9.jpeg' }, { isim: 'Halay Boncuğu Oyası', tanim: 'Adını halk dansı halaydan alır. İnsanların el ele tutuşarak oluşturduğu düzenli sıra ve ritmik hareketler bu oyaya esin kaynağı olmuştur. Toplumsal dayanışma, birlik ve kutlamaların simgesidir.', image: '/oya_image_10.jpeg' }]
+    videos: []
   }
 };
 
@@ -109,6 +91,18 @@ const VideoPlayer = ({ data }) => {
 export default function App() {
   const [activeRegion, setActiveRegion] = useState(null);
   const [infoModal, setInfoModal] = useState(null);
+  const [lang, setLang] = useState('tr');
+
+  const t = LOCALES[lang];
+  
+  // Merge REGION_MEDIA with OYA_DATA for current lang
+  const REGION_DATA = Object.keys(REGION_MEDIA).reduce((acc, key) => {
+    acc[key] = {
+      ...REGION_MEDIA[key],
+      ...OYA_DATA[lang][key]
+    };
+    return acc;
+  }, {});
 
   const activeData = activeRegion ? REGION_DATA[activeRegion] : null;
 
@@ -130,8 +124,26 @@ export default function App() {
       }}
     >
       
+      {/* Top Language Bar */}
+      <div className="absolute top-4 right-4 z-50 flex items-center justify-center gap-2 bg-white/80 backdrop-blur-md rounded-full p-2 border border-neutral-200 shadow-sm">
+        <button 
+          onClick={() => setLang('tr')} 
+          className={`flex items-center justify-center w-8 h-8 rounded-full overflow-hidden transition-all ${lang === 'tr' ? 'ring-2 ring-offset-2 ring-orange-500 scale-110' : 'opacity-70 hover:opacity-100 hover:scale-105'}`}
+          title="Türkçe"
+        >
+          <img src="https://flagcdn.com/w40/tr.png" alt="TR" className="w-full h-full object-cover" />
+        </button>
+        <button 
+          onClick={() => setLang('en')} 
+          className={`flex items-center justify-center w-8 h-8 rounded-full overflow-hidden transition-all ${lang === 'en' ? 'ring-2 ring-offset-2 ring-rose-500 scale-110' : 'opacity-70 hover:opacity-100 hover:scale-105'}`}
+          title="English"
+        >
+          <img src="https://flagcdn.com/w40/gb.png" alt="EN" className="w-full h-full object-cover" />
+        </button>
+      </div>
+
       {/* Header Banner */}
-      <header className="pt-4 sm:pt-8 pb-4 sm:pb-8 px-4 sm:px-6 w-full max-w-7xl mx-auto flex items-center justify-center relative z-20">
+      <header className="pt-16 sm:pt-16 pb-4 sm:pb-8 px-4 sm:px-6 w-full max-w-7xl mx-auto flex items-center justify-center relative z-20">
         <motion.div 
           initial={{ y: -20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
@@ -150,13 +162,13 @@ export default function App() {
           {/* Central Text Block */}
           <div className="flex flex-col items-center justify-center text-center flex-1">
             <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight bg-gradient-to-r from-orange-600 via-rose-600 to-purple-600 bg-clip-text text-transparent pb-2 drop-shadow-sm mb-1">
-              İğnenin Ucundaki Sessiz Dil
+              {t.title}
             </h1>
             <h2 className="text-sm md:text-base lg:text-lg font-semibold text-[#374151] mb-2 leading-snug">
-              Boncuk Oyalarının Anadolu Kültüründeki İletişim Rolü
+              {t.subtitle}
             </h2>
             <p className="text-xs md:text-sm font-medium text-[#4b5563]">
-              Alperen KOYUNCU, Derin ZÜLFÜKAR, Ömer Asaf KARABACAK
+              {t.authors}
             </p>
           </div>
 
@@ -200,7 +212,7 @@ export default function App() {
             className="cursor-pointer flex items-center gap-2 px-6 py-3 bg-white/80 hover:bg-white text-neutral-800 rounded-full shadow-md hover:shadow-lg transition-all border border-neutral-200 backdrop-blur-sm font-semibold text-sm sm:text-base"
           >
             <BookOpen className="w-5 h-5 text-orange-500" />
-            Proje Ön Bilgi
+            {t.pre_info}
           </motion.button>
           
           <motion.button
@@ -210,15 +222,16 @@ export default function App() {
             className="cursor-pointer flex items-center gap-2 px-6 py-3 bg-white/80 hover:bg-white text-neutral-800 rounded-full shadow-md hover:shadow-lg transition-all border border-neutral-200 backdrop-blur-sm font-semibold text-sm sm:text-base"
           >
             <FileText className="w-5 h-5 text-rose-500" />
-            Proje Detay
+            {t.detailed_info}
           </motion.button>
         </div>
 
         <button
           onClick={() => setInfoModal('arastirma')}
-          className="cursor-pointer text-neutral-500 hover:text-neutral-800 text-sm border-b border-transparent hover:border-neutral-800 transition-colors mt-2"
+          className="cursor-pointer text-neutral-500 hover:text-neutral-800 text-sm md:text-xs underline underline-offset-4 hover:decoration-neutral-800 transition-all mt-6"
+          style={{ cursor: 'pointer' }}
         >
-          Akademik Araştırma Metni
+          {t.academic_text}
         </button>
       </footer>
 
@@ -238,12 +251,12 @@ export default function App() {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
               transition={{ type: "spring", damping: 25, stiffness: 300 }}
-              className="relative w-full max-w-4xl max-h-[90vh] bg-white rounded-3xl shadow-2xl overflow-y-auto overflow-x-hidden flex flex-col z-10 border border-neutral-200"
+              className="relative w-[95vw] md:w-full max-w-4xl max-h-[90vh] bg-white rounded-3xl shadow-2xl overflow-y-auto overflow-x-hidden flex flex-col z-10 border border-neutral-200"
             >
               <button 
                 onClick={() => setInfoModal(null)}
                 className="absolute top-4 right-4 z-20 p-2 bg-neutral-100 hover:bg-neutral-200 text-neutral-600 rounded-full transition-colors"
-                aria-label="Kapat"
+                aria-label={t.close}
               >
                 <X className="w-5 h-5" />
               </button>
@@ -252,94 +265,89 @@ export default function App() {
                 {infoModal === 'onbilgi' && (
                   <>
                     <div className="text-center mb-10">
-                      <h1 className="text-3xl sm:text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-orange-600 to-rose-600 mb-4 inline-block">İĞNENİN UCUNDAKİ SESSİZ DİL</h1>
-                      <h2 className="text-xl font-medium text-neutral-500">Boncuk Oyalarının Anadolu Kültüründeki İletişim Rolü</h2>
-                      <p className="mt-6 text-sm font-semibold text-neutral-400">Alperen KOYUNCU, Derin ZÜLFÜKAR, Ömer Asaf KARABACAK</p>
+                      <h1 className="text-3xl sm:text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-orange-600 to-rose-600 mb-4 inline-block">{t.title}</h1>
+                      <h2 className="text-xl font-medium text-neutral-500">{t.subtitle}</h2>
+                      <p className="mt-6 text-sm font-semibold text-neutral-400">{t.authors}</p>
                     </div>
 
-                    <h3 className="text-2xl font-bold border-b pb-2 mb-4">Problem Cümlesi</h3>
+                    <h3 className="text-2xl font-bold border-b pb-2 mb-4">{t.problem_statement}</h3>
                     <p className="text-lg leading-relaxed mb-8">
-                      Boncuk oyaları sadece süsleme amacıyla mı yapılmaktadır, yoksa Anadolu kültüründe duygu ve düşünceleri ifade eden bir iletişim aracı mıdır?
+                      {t.problem_text}
                     </p>
 
-                    <h3 className="text-2xl font-bold border-b pb-2 mb-4">Hipotez</h3>
+                    <h3 className="text-2xl font-bold border-b pb-2 mb-4">{t.hypothesis}</h3>
                     <p className="text-lg leading-relaxed mb-8">
-                      Anadolu’da yapılan boncuk oyalarının yalnızca estetik bir süsleme unsuru olmadığı, motif ve renkleri aracılığıyla kültürel anlamlar taşıyan bir iletişim biçimi olduğu düşünülmektedir.
+                      {t.hypothesis_text}
                     </p>
 
-                    <h3 className="text-2xl font-bold border-b pb-2 mb-4">Bulgular</h3>
+                    <h3 className="text-2xl font-bold border-b pb-2 mb-4">{t.findings}</h3>
                     <p className="text-lg leading-relaxed mb-4">
-                      Araştırma sürecinde elde edilen veriler, boncuk oyalarının Anadolu kültüründe yalnızca estetik bir süsleme unsuru olarak değil, aynı zamanda anlam taşıyan bir kültürel ifade biçimi olarak kullanıldığını göstermektedir. İncelenen kaynaklar ve örnek motifler doğrultusunda aşağıdaki bulgulara ulaşılmıştır:
+                      {t.findings_intro}
                     </p>
                     <ul className="space-y-4 text-lg leading-relaxed list-disc pl-6 text-neutral-600">
-                      <li><strong>Bölgesel Etkiler:</strong> Anadolu’nun farklı bölgelerinde yapılan boncuk oyalarının motif, renk ve biçim özelliklerinin bölgenin kültürel yapısı, yaşam biçimi ve doğa koşullarıyla ilişki gösterdiği görülmüştür. Bu durum, oyaların yerel kültürün bir yansıması olduğunu ortaya koymaktadır.</li>
-                      <li><strong>Doğa Temelli Motifler:</strong> Boncuk oyalarında en sık rastlanan motiflerin bitki ve doğa temelli olduğu belirlenmiştir. Çiçek, yaprak, dal ve çeşitli geometrik şekillerden oluşan bu motiflerin çoğu doğadan esinlenerek oluşturulmuştur.</li>
-                      <li><strong>Sembolik Anlamlar:</strong> Araştırma sırasında bazı oya motiflerinin belirli sembolik anlamlar taşıdığı tespit edilmiştir. Örneğin gül motifinin sevgi ve zarafeti, zeytin dalı motifinin barış ve bereketi, nazar boncuğu motifinin ise korunma ve nazardan sakınma inancını temsil ettiği görülmüştür.</li>
-                      <li><strong>İletişim Aracı:</strong> Boncuk oyalarının geçmiş dönemlerde kadınlar arasında dolaylı bir iletişim aracı olarak da kullanıldığı anlaşılmaktadır. Özellikle yazma kenarlarına yapılan oyaların, kişinin ruh hâlini, sosyal durumunu veya çevresine iletmek istediği mesajları yansıtabildiği ifade edilmektedir.</li>
-                      <li><strong>Günümüzdeki Yeri:</strong> Günümüzde boncuk oyalarının kullanım alanının kısmen değiştiği, ancak geleneksel el sanatı olarak varlığını sürdürdüğü görülmektedir. Bu oyalar hem günlük kullanımda hem de kültürel mirasın korunmasına yönelik çalışmalarda yer almaktadır.</li>
-                      <li><strong>Kültürel Derinlik:</strong> Elde edilen bulgular, boncuk oyalarının Anadolu kültüründe estetik değerinin yanında toplumsal ve kültürel anlamlar taşıyan önemli bir el sanatı ürünü olduğunu ortaya koymaktadır.</li>
+                      <li><strong>{t.regional_effects}</strong> {t.regional_effects_text}</li>
+                      <li><strong>{t.nature_motifs}</strong> {t.nature_motifs_text}</li>
+                      <li><strong>{t.symbolic_meanings}</strong> {t.symbolic_meanings_text}</li>
+                      <li><strong>{t.communication_tool}</strong> {t.communication_tool_text}</li>
+                      <li><strong>{t.current_status}</strong> {t.current_status_text}</li>
+                      <li><strong>{t.cultural_depth}</strong> {t.cultural_depth_text}</li>
                     </ul>
                   </>
                 )}
 
                 {infoModal === 'detay' && (
                   <>
-                    <h1 className="text-3xl sm:text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-orange-600 to-rose-600 mb-8 text-center">Proje Detay Raporu</h1>
+                    <h1 className="text-3xl sm:text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-orange-600 to-rose-600 mb-8 text-center">{t.project_detail_report}</h1>
                     
-                    <h3 className="text-2xl font-bold border-b pb-2 mb-4 text-orange-600">Özet</h3>
+                    <h3 className="text-2xl font-bold border-b pb-2 mb-4 text-orange-600">{t.abstract}</h3>
                     <p className="text-lg leading-relaxed mb-8">
-                      Bu araştırmada Anadolu’nun geleneksel el sanatları arasında önemli bir yere sahip olan boncuk oyalarının yalnızca estetik bir süsleme unsuru olup olmadığı ve bu oyaların kültürel anlamlar taşıyıp taşımadığı incelenmiştir. Çalışmanın temel amacı, boncuk oyalarında kullanılan motif ve renklerin hangi anlamları ifade ettiğini araştırmak ve bu el sanatının kültürel iletişim açısından taşıdığı değeri ortaya koymaktır.
+                      {t.abstract_p1}
                       <br /><br />
-                      Araştırma sürecinde boncuk oyalarıyla ilgili yazılı kaynaklar incelenmiş, farklı bölgelerde kullanılan oya motifleri hakkında bilgiler toplanmış ve bu motiflerin taşıdığı sembolik anlamlar değerlendirilmiştir. Elde edilen veriler doğrultusunda, boncuk oyalarının Anadolu kültüründe yalnızca süsleme amacıyla yapılmadığı; aynı zamanda bireylerin duygu ve düşüncelerini dolaylı biçimde ifade etmelerine olanak sağlayan bir iletişim aracı olarak da kullanıldığı anlaşılmıştır. Özellikle çiçek, yaprak ve çeşitli geometrik şekillerden oluşan motiflerin çoğunlukla doğadan esinlenerek oluşturulduğu ve bazı motiflerin belirli duyguları ya da inançları temsil ettiği görülmüştür.
+                      {t.abstract_p2}
                       <br /><br />
-                      Araştırma sonuçları, boncuk oyalarının kültürel birikimin ve geleneksel yaşam biçiminin önemli bir yansıması olduğunu göstermektedir. Günümüzde kullanım alanı kısmen değişmiş olsa da boncuk oyaları, Anadolu’da geleneksel el sanatları içinde varlığını sürdürmekte ve kültürel mirasın gelecek kuşaklara aktarılmasında önemli bir rol oynamaktadır. Bu çalışma ile boncuk oyalarının estetik değerinin yanı sıra kültürel ve toplumsal anlamlarının da vurgulanması amaçlanmıştır.
+                      {t.abstract_p3}
                     </p>
 
-                    <h3 className="text-2xl font-bold border-b pb-2 mb-4 text-orange-600">Giriş</h3>
+                    <h3 className="text-2xl font-bold border-b pb-2 mb-4 text-orange-600">{t.introduction}</h3>
                     <p className="text-lg leading-relaxed mb-8">
-                      Anadolu’da el sanatları kültürün önemli bir parçasıdır. Boncuk oyaları da geleneksel el sanatları arasında yer almaktadır. Geçmişte kadınlar yaptıkları oyalar aracılığıyla mutluluk, üzüntü, sevgi gibi duygularını ifade etmişlerdir. Bu nedenle boncuk oyaları sadece süsleme amacı taşımamakta, aynı zamanda kültürel bir iletişim aracı olarak da kullanılmaktadır. Bu proje ile boncuk oyalarının taşıdığı anlamların araştırılması amaçlanmıştır.
+                      {t.introduction_text}
                     </p>
 
-                    <h3 className="text-2xl font-bold border-b pb-2 mb-4 text-orange-600">Yöntem</h3>
+                    <h3 className="text-2xl font-bold border-b pb-2 mb-4 text-orange-600">{t.method}</h3>
                     <p className="text-lg leading-relaxed mb-8">
-                      Bu araştırmada nitel araştırma yöntemlerinden <strong>doküman incelemesi ve gözlem yöntemi</strong> kullanılmıştır. Araştırma sürecinde öncelikle boncuk oyaları ve Anadolu’daki geleneksel el sanatları hakkında bilgi edinmek amacıyla ilgili kitaplar, makaleler ve güvenilir internet kaynakları incelenmiştir. Bu kaynaklarda boncuk oyalarının tarihsel gelişimi, kullanım alanları ve motiflerin taşıdığı anlamlara ilişkin bilgiler toplanmıştır.
+                      {t.method_p1}
                       <br /><br />
-                      Araştırmanın bir diğer aşamasında farklı oya örnekleri incelenmiş ve bu oyaların motif, renk ve biçim özellikleri belirlenmiştir. İncelenen motifler sınıflandırılarak benzer özellik gösteren motifler bir araya getirilmiş ve hangi temalardan esinlenildiği değerlendirilmiştir. Bu süreçte özellikle doğa temelli motiflerin (çiçek, yaprak, dal gibi) ve nazar, bereket gibi sembolik anlamlar taşıyan motiflerin daha sık kullanıldığı gözlemlenmiştir.
+                      {t.method_p2}
                       <br /><br />
-                      Elde edilen bilgiler karşılaştırma yöntemiyle değerlendirilmiş ve motiflerin kültürel anlamları belirlenmeye çalışılmıştır. Araştırma sürecinde ulaşılan veriler düzenlenerek yorumlanmış ve boncuk oyalarının yalnızca estetik bir süsleme unsuru olmadığı, aynı zamanda kültürel bir ifade biçimi olarak da değerlendirilebileceği sonucuna ulaşılmıştır.
+                      {t.method_p3}
                       <br /><br />
-                      Bu yöntem sayesinde boncuk oyalarının motif özellikleri ve taşıdığı sembolik anlamlar hakkında genel bir değerlendirme yapılması amaçlanmıştır.
+                      {t.method_p4}
                     </p>
 
-                    <h3 className="text-2xl font-bold border-b pb-2 mb-4 text-orange-600">Sonuç ve Tartışma</h3>
+                    <h3 className="text-2xl font-bold border-b pb-2 mb-4 text-orange-600">{t.conclusion_discussion}</h3>
                     <p className="text-lg leading-relaxed mb-8">
-                      Araştırma sonucunda boncuk oyalarının yalnızca süsleme amacıyla yapılmadığı, aynı zamanda kültürel anlamlar taşıdığı görülmüştür. Oyaların motifleri ve renkleri çeşitli mesajlar ifade etmektedir. Bu durum boncuk oyalarının Anadolu kültüründe önemli bir yere sahip olduğunu göstermektedir. Geleneksel el sanatlarının korunması ve gelecek nesillere aktarılması büyük önem taşımaktadır.
+                      {t.conclusion_text}
                     </p>
 
-                    <h3 className="text-2xl font-bold border-b pb-2 mb-4 text-orange-600">Öneriler</h3>
+                    <h3 className="text-2xl font-bold border-b pb-2 mb-4 text-orange-600">{t.recommendations}</h3>
                     <p className="text-lg leading-relaxed mb-8">
-                      Proje, VR gözlük ile Türkiye’nin yedi bölgesini videolu ve görselli şekilde sunarak öğrenmeyi daha etkileşimli hâle getirmektedir. İçeriklerin eğitim ve öğretim materyali olarak kullanılması, öğrencilerin coğrafi, kültürel ve tarihsel farkındalığını artırabilir. Projenin interaktif ögelerle desteklenmesi, farklı VR cihazlarıyla uyumlu tasarlanması ve kullanıcı geri bildirimleriyle sürekli geliştirilmesi önerilmektedir. Ayrıca akademik kurum ve kültürel kuruluşlarla işbirliği yapılarak içeriklerin doğruluğu ve zenginliği güçlendirilebilir.
+                      {t.recommendations_text}
                     </p>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
                       <div>
-                        <h3 className="text-2xl font-bold border-b pb-2 mb-4 text-orange-600">Teşekkür</h3>
+                        <h3 className="text-2xl font-bold border-b pb-2 mb-4 text-orange-600">{t.acknowledgements}</h3>
                         <p className="text-base leading-relaxed text-neutral-600 italic">
-                          Bu çalışmanın hazırlanmasında desteklerini esirgemeyen değerli öğretmenlerimize, danışmanımıza ve araştırma sürecinde bilgi ve kaynak paylaşımında bulunan tüm kişi ve kurumlara teşekkür ederiz. Ayrıca projenin gerçekleştirilmesine katkı sağlayan ailelerimize ve arkadaşlarımıza göstermiş oldukları anlayış ve sabır için şükranlarımızı sunarız.
+                          {t.acknowledgements_text}
                         </p>
                       </div>
                       
                       <div className="bg-neutral-50 p-6 rounded-2xl border border-neutral-100">
-                        <h3 className="text-xl font-bold border-b pb-2 mb-4 text-neutral-800">Kaynaklar</h3>
+                        <h3 className="text-xl font-bold border-b pb-2 mb-4 text-neutral-800">{t.references}</h3>
                         <ul className="space-y-2 text-sm text-neutral-500 break-words list-disc pl-4">
-                          <li>Adana Olgunlaştırma Enstitüsü Öğretim Görevlisi Meral ALTINKAYA</li>
-                          <li>Prof. Dr. ONUK, Tacisel (2005) Osmalıdan Günümüze Oyalar (sf:4,5,174)</li>
-                          <li>Akpınarlı, H. Feriha: "El Örgüsü Çoraplarda Teknik Desen Renk ve Kullanım Özellikleri", Ankara: G.Ü. Sosyal Bilimler Enstitüsü</li>
-                          <li>Akpınarlı, H. Feriha: "Kahramanmaraş Oyaları" Kültür ve Sanat Dergisi, İş Bankası Yayınları</li>
-                          <li>Bayra, Muammer: "İğne Oyası Teknikleri ve Kastamonu İğne Oyaları". Ankara 1992.</li>
-                          <li>Eronç, Perihan: Giyim Süsleme Teknikleri. İstanbul 1984.</li>
-                          <li>Onuk, Taciser: İğne Oyaları Türkiye İş Bankası Yayınları. Ankara 1988.</li>
-                          <li>Özel Web Kaynağı: boncukoyasi.com, ŞENOL, Sevgi</li>
+                          {t.references_list.map((ref, idx) => (
+                            <li key={idx}>{ref}</li>
+                          ))}
                         </ul>
                       </div>
                     </div>
@@ -350,79 +358,79 @@ export default function App() {
                 {infoModal === 'arastirma' && (
                   <>
                     <div className="text-center mb-10">
-                      <h1 className="text-3xl sm:text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-neutral-600 to-neutral-900 mb-4 inline-block">Oyaların Genel Özellikleri ve Tarihsel Gelişimi</h1>
-                      <h2 className="text-xl font-medium text-neutral-500">Akademik Araştırma Metni</h2>
+                      <h1 className="text-3xl sm:text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-neutral-600 to-neutral-900 mb-4 inline-block">{t.general_characteristics}</h1>
+                      <h2 className="text-xl font-medium text-neutral-500">{t.academic_research_text}</h2>
                     </div>
 
-                    <h3 className="text-2xl font-bold border-b pb-2 mb-4">Önsöz</h3>
+                    <h3 className="text-2xl font-bold border-b pb-2 mb-4">{t.foreword}</h3>
                     <p className="text-lg leading-relaxed mb-6">
-                      El sanatları bir milletin kültürünü temsil etmekte ve tanıtmaktadır. Bu nedenle el sanatları ürünleri de o ülkenin kültürel kimliğinin en canlı belgeleridir. Bir ülkenin gelenek ve göreneklerinin yaşama biçiminin kuşaktan kuşağa aktarılmasında, gelişerek devam etmesinde en büyük rolü yine el sanatları almaktadır.
+                      {t.foreword_p1}
                     </p>
                     <p className="text-lg leading-relaxed mb-8">
-                      Geleneksel el sanatı ürünlerimiz içinde en zengin çeşitleri bulunanı kuşkusuz oyalardır. Çünkü Anadolu kadını oyasız yazma örtmez. Çeyiz geleneğinde bile oyaların yeri büyüktür. Her genç kızın çeyizinde ailenin ekonomik durumuna göre 50-100 arası oyalı tülbent bulunur. Bu oyaların bir bölümü gelinin ve damadın yakınlarına hediye olarak dağıtılır. En güzel oyalı yazmalar kaynana ve görümcelere verilir. Ayrıca düğünden sonra gelin görmeye gelen konuklara da oyalı yazmalar dağıtılır. Bu geleneğin günümüze oya çeşitlerini zenginleştirerek geldiği ve bölgeden bölgeye, şehirden şehre değişerek renkli bir mozaik sunduğu görülmektedir.
+                      {t.foreword_p2}
                     </p>
                     <p className="text-lg leading-relaxed mb-8">
-                      Bizler de unutulmaya yüz tutmuş geleneksel el sanatlarımızı tekrar gün yüzüne çıkararak daha önce belli bölgelerle sınırlı kalmış araştırmalar ve yazılardan derlediğimiz bilgilerle Anadolu’nun tüm bölgelerini bir çatı alında, toplu bir kaynak olarak sunmayı; günümüzde kullanılır yazılı bir sözlüğe dönüştürüp gerek oyalarımızın unutulmaması ve yaşatılması adına gerekse oyalarımızdaki motiflerin hangi anlamda hangi sembolde kullanıldıklarını bölgesel olarak teknoloji destekli tek tek motiflerin anlamlarını, teknik özelliklerini vb. çalışmalarla sözlük yaparak hem sanatın hem de motiflerin taşıdığı kültürel mirası gün yüzüne çıkarmayı hedefliyoruz.
+                      {t.foreword_p3}
                     </p>
 
-                    <h3 className="text-2xl font-bold border-b pb-2 mb-4 mt-8">Giriş</h3>
+                    <h3 className="text-2xl font-bold border-b pb-2 mb-4 mt-8">{t.introduction}</h3>
                     <p className="text-lg leading-relaxed mb-6">
-                      Anadolu’nun zengin kültürel yapısı içerisinde, kadını en çok ilgilendiren ve kadın tarafından üretilen el sanatlarından birisi olarak bilinen oyalar... Binlerce yıllık köklü Türk kültürü içerisindeki varlığını, gelenekler ve görenekler yoluyla kuşaktan kuşağa aktararak koruyabilmiş, özgün el sanatlarımız arasındadır. Kadının, doğada gördüğü güzellikleri, üzerinde bulundurma isteğiyle başlayan bu küçük uğraş, bireysel bir isteğin karşılanmasının yanı sıra toplum tarafından da oldukça beğenilen ve tercih edilen bir kültür ürünü olarak, çağlardan beri Türk kadını tarafından yapıla gelen bir el sanatı olmuştur.
+                      {t.research_intro_p1}
                     </p>
                     <p className="text-lg leading-relaxed mb-6">
-                      Anadolu Türk kadınını, yaşadığı çevre ve sahip olduğu sosyal konumuna bağlı olarak, bozkırın ortasında mağrur duran, üzerinde bin bir çeşit çiçek ve bitkinin yetiştiği yüce bir dağa benzetebiliriz. Baharın canlılığını, yazın bereketini ve sonbaharın matemini kendi zevkine göre kıyafetlerinde yeniden oluşturan Anadolu kadını, zirveye yani o yüce dağın başına daha da ayrı bir özen göstermiştir. Papatyaları, nergisleri, gülleri, laleleri ve üzerinde bulunmasını istediği diğer her şeyi, narin parmaklarıyla işlemiştir, başını saran örtünün kenarlarına. Bunu yaparken emek harcamış, göz nuru dökmüş ve her bir ilmekle kendi iç dünyasını yansıtmıştır şaheserlerinde. Bundan dolayıdır ki oyalar, çağlar boyunca kadının diline tercüman, yüreğine sırdaş ve güzelliğine zarafet katan ayrılmaz bir parça olmuştur. Bu nedenle de oyaların, Türk kadınının yanındaki varlığı da ebedi olacaktır.
+                      {t.research_intro_p2}
                     </p>
                     <p className="text-lg leading-relaxed mb-6">
-                      Oyaların, zaman içerisinde kadınlar tarafından başka amaçlar için kullanıldığını, Anadolu’daki farklı uygulamalarda görebilmekteyiz. Oyalar, her ne kadar süslenme kaygısıyla oluşturulmuş bir el sanatı gibi olsa da; toplumun yaşamış olduğu coğrafi, sosyal ve ekonomik faktörlere göre şekil alabilen özelliğiyle de kendisine farklı alanlarda yer edinmiştir. El sanatları üzerine yapılan araştırmalar ışığında, Anadolu’nun bazı kırsal bölgelerinde oyaların, kadınlar tarafından bir iletişim aracı olarak kullanıldığını görmekteyiz. Aile ya da toplum içerisinde duygu, düşünce ve isteğini sözlü olarak ifade etmesi ayıplanan kadınlar, bu durumu aşmak ve ahlaken saygısız davranmamak amacıyla işledikleri oyalara, kadınların anlayacağı anlamlar yüklemişlerdir. Bu sayede emek ve zaman harcayarak oluşturulan oyalar; duygu, düşünce ve isteğin anlatıldığı sembollere; sembollerden de kelimelere dönüşerek halk kültürü içerisinde maddi ve manevi unsurları bünyesinde barındıran bir değer olarak karşımıza çıkmaktadır.
+                      {t.research_intro_p3}
                     </p>
                     <p className="text-lg leading-relaxed mb-6">
-                      Türk kadınının, çevresinde gördüğü objelere birer anlam yükleyerek oluşturduğu bu sembolik anlatım dili, ortak bir dil olarak, o yörede yaşayan kadınlar tarafından bilinir ve anlaşılır. Bu lisanda kullanılacak simgeler, anlatılmak istenen konuyla alakalı motiflerden seçilirdi ki, anlatımı kolay olsun. Örneğin; Konya yöresindeki kadınlar, işledikleri “Çayır çimen” oyasıyla, kayınvalidesi ile gelinin arasının mutlu ve ferah olmasını simgelemiştir; “Mezar taşı” oya motifiyle iman ve ibadete önem ver, dünya işlerine dalıp gitme mesajını vermiştir. Çoğu yöremizde gördüğümüz ancak Konya yöresinde anlamsal bir özellik kazanarak kullanılan “Biber oyası” ise kadının eşi ile arasının iyi olmadığı mesajını içermiştir.
+                      {t.research_intro_p4}
                     </p>
                     <p className="text-lg leading-relaxed mb-6">
-                      Duyguların ve durumların, bu şekilde semboller kullanılarak aktarılması, hem kadının sosyalleşmesini sağlıyordu hem de iç dünyasının dışa vurumunu daha kolay bir hale getiriyordu. Türk kadınının, dünya görüşü ve dünyayı algılayış biçiminin küçük bir el sanatında vücut bulması üretime ve sanatsal beceriye yatkınlığıyla açıklanabilir ancak. Bu yönüyle oyaları, sözlü kültür unsurlarımızda da görebilmekteyiz. Örneğin: Çanakkale yöremize ait; “Çemberimde gül oya, Gülmedim doya doya.” ve Adıyaman yöremize ait; “Kaşın nakış, kirpiğin oya.” türkülerinde olduğu gibi. Gizli bir aşkın sessiz anlatımı ya da aşığın yavuklusuna duyduğu sevginin ve hasret çekenlerin de nişanı olmuştur oya.
+                      {t.research_intro_p5}
                     </p>
                     <p className="text-lg leading-relaxed mb-6">
-                      Oyalarda kullanılan motifleri genel olarak sınıflandırdığımızda motiflerin bitki, hayvan ya da geometrik özelliklere sahip simgelerden meydana geldiğini görmekteyiz. Bitkisel motifleri; gül, menekşe, üzüm, mum çiçeği, karanfil oluştururken; hayvansal özelliklere sahip motifleri; kelebek, tırtıl, kurt, kuş gibi hayvanların bütünü ya da bir parçası oluşturur; geometrik motifleriyse keskin hatlara sahip şekiller oluşturmaktadır; yıldız, üçgen, kaya gibi. Yaşanmışlığın izlerini taşıyarak günümüze kadar gelen oyalar, en çok evlenme adetlerimizde karşımıza çıkmaktadır. Belki de bayanlar için değeri, bu yüzden daha çok artmaktadır.
+                      {t.research_intro_p6}
                     </p>
                     <p className="text-lg leading-relaxed mb-6">
-                      Birbirinden değerli el işlemeleriyle dolu olan çeyiz sandıkları, emeğin ve göz nurunun da, ta kendisidir. Bu yüzden özeldir ve annenin kızına bıraktığı en değerli mirasıdır. Çeyiz sandığı hazırlama işine, kız çocuğunun doğumuyla birlikte başlanırdı. Bu işleme ne kadar erken zamanda başlanılırsa, kızın evleneceği zamana kadar ki süre içinde, o kadar çok el işi sandığa konurdu. Bu yüzden mahalledeki kadınlar ve yakın akrabalarda bu olaya iştirak eder ve çeyiz sandığına kendi işlemeleriyle katkı sağlardı. Hazırlanan bu el işlemeleri, düğün gününe kadar özenle çeyiz sandığında saklanır. Düğün günü, davul zurna eşliğinde damadın evine taşınarak, bu gelenek bir sonraki kuşağa aktarılırdı.
+                      {t.research_intro_p7}
                     </p>
                     <p className="text-lg leading-relaxed mb-8">
-                      Oya ve nakış gibi el sanatları, sosyal hayatta kadınların bir araya geldikleri ve adına “gün” dedikleri oturmalarda, aynı sokağı paylaşan komşu kadınların akşamüstü hava almak için çıktıkları kapı önlerinde, yani birlikte hem sohbet ettikleri hem de vakit geçirdikleri zamanlarda bile ellerinden bırakmadıkları bir uğraştır. İşin özü; el işi işlemek, bir tür vakit geçirme ya da oyalanma aracı olmuştur kadınlar için. Belki de oyalanma kelimesinin kaynağını da, oya işlemelerinde harcanan bu zamanın çokluğu oluşturmaktadır.
+                      {t.research_intro_p8}
                     </p>
 
-                    <h3 className="text-2xl font-bold border-b pb-2 mb-4 mt-8">Oyanın Tarihsel Gelişimi</h3>
+                    <h3 className="text-2xl font-bold border-b pb-2 mb-4 mt-8">{t.historical_development}</h3>
                     <p className="text-lg leading-relaxed mb-6">
-                      Geleneksel kültürümüzün ve el sanatlarımızın en önemli örneklerinden birisi de oyalardır. Oya; çiçekle örgü sanatının birleşmesinden doğmuş süslemek, süslenmek amacıyla yapılan ve ayrıca taşıdıkları mesajlarla bir iletişim aracı olarak da kullanılan ve tekniği örgü olan bir dantel türüdür. Örücülük sanatının ilk kez nerede, nasıl ve kimler tarafından başlatıldığı kesin olarak bilinmemektedir. Ancak, insanların örtünme ihtiyacını hissettiği zamanla başladığı zevk, beğeni ve yaratıcılık yeteneklerinin artmasıyla gelişme gösterdiği düşünülebilir. "Değişik tarihi belgeler ve mesleki kaynaklar M.Ö. 3-5 bin yıllarını örücülüğün başlangıç tarihi olarak ve Orta Asya, Çin, Mısır’daki yaşamış toplumları da ilk örmeyi uygulayan insanlar" olarak belirtmektedir.
+                      {t.history_p1}
                     </p>
                     <p className="text-lg leading-relaxed mb-6">
-                      Örücülük sanatına tarihsel açıdan bakıldığında, çok eski çağlara uzanan tarihi ve Türklere ait ilk belgeleri Orta Asya’da yapılan arkeolojik kazılarda rastlandığı bilinmektedir. M.Ö. 7. ve 8. yüzyıllardan Orta Asya’da yaşayan Hunlara ait Pazarık 2. kurganındaki bulgular arasında örücülük ile ilgili örneklere rastlanmıştır. Doğu’da gelişen örücülük sanatı, ticari gemiler ile tüccarlar tarafından Doğu’dan Batı’ya götürülmüştür. İslam dünyasında yapılan çok renkli çorapları, 12.-16. yüzyıllarda İspanya ve İtalya’da büyük başarıya ulaşarak örgünün kaynağı olmuştur.
+                      {t.history_p2}
                     </p>
                     <p className="text-lg leading-relaxed mb-6">
-                      Avrupa’da örücülüğün geliştiği tarihlerde örücülükle ilgili meslekler loncaları kurulmuştur. Loncaya girmek isteyen gençler 3 ile 6 yıl arasında ustaya çıraklık eder ve sonra değişik örgü tekniklerini öğrenmek ve yaratıcılığını geliştirmek amacıyla yabancı ülkelere seyahat ederlerdi. Osmanlı döneminde el sanatlarında durum çok farklı değildi. El sanatları atölyelerinde yapılan ürünlerin Batılı ülkelere de ulaştığı kaynaklardan anlaşılmaktadır. Osmanlı döneminde el sanatları konularda çıraklık eğitimi yapılırken loncalarda yetişen çırakların önlük giyip usta olabilmesi için ustalardan kurulmuş bir komisyonun önünde çeşitli eserler örerek, kendi orijinal motifleri ile uygulamalı sınavdan geçerlerdi.
+                      {t.history_p3}
                     </p>
                     <p className="text-lg leading-relaxed mb-8">
-                      Oya bir bezemedir. Süslemek anlamında kullanılan bu sözcük 2. yüzyıl Türklerinde "ev bezendi", Memlük Türklerinde "Oyu", Kırgız Türklerinde "Oyuma" şeklindedir. Osmanlı imparatorluğu’nun her döneminde saray içi, dışı ve Anadolu’da yapılan geleneksel örgü ve oyalara, çok önem verilmiş, Cumhuriyet döneminde yeteri kadar ilgi görmemekle birlikte oyalar günümüze kadar geleneksel yollarla gelebilmiştir.
+                      {t.history_p4}
                     </p>
 
-                    <h3 className="text-2xl font-bold border-b pb-2 mb-4 mt-8">Kullanılan Malzemeler</h3>
+                    <h3 className="text-2xl font-bold border-b pb-2 mb-4 mt-8">{t.materials_used}</h3>
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8 mt-6">
                       <div className="bg-neutral-50 p-6 rounded-2xl border border-neutral-100">
-                        <h4 className="text-xl font-bold text-neutral-800 mb-2">Pamuk İpliği</h4>
+                        <h4 className="text-xl font-bold text-neutral-800 mb-2">{t.cotton_yarn}</h4>
                         <p className="text-base text-neutral-600">
-                          Pamuk bitkisinden elde edilen pamuk lifi tekstil sanayinde en önemli yeri almaktadır. Yaş mukavemetinin fazlalığı, yıkanmaya dayanaklı olması, hijyenik özelliği, nem tutma yeteneğinin yüksekliği nedeniyledir. En güzel oya dantellerini kadınlarımız pamuk iplikleri ile yapmışlardır.
+                          {t.cotton_yarn_text}
                         </p>
                       </div>
                       <div className="bg-neutral-50 p-6 rounded-2xl border border-neutral-100">
-                        <h4 className="text-xl font-bold text-neutral-800 mb-2">Sentetik İplik</h4>
+                        <h4 className="text-xl font-bold text-neutral-800 mb-2">{t.synthetic_yarn}</h4>
                         <p className="text-base text-neutral-600">
-                          Sentetik liflerin temel maddeleri kömür, petrol, su, azot, gibi son derecede basit maddelerdir. Oya yapımında kullanılan sentetik liflerden elde edilen iplikler parlak, güzel görünüşlü ve çok büklümlüdür. Çile, makara, bobin halinde satılmaktadır.
+                          {t.synthetic_yarn_text}
                         </p>
                       </div>
                       <div className="bg-neutral-50 p-6 rounded-2xl border border-neutral-100">
-                        <h4 className="text-xl font-bold text-neutral-800 mb-2">Boncuk</h4>
+                        <h4 className="text-xl font-bold text-neutral-800 mb-2">{t.bead}</h4>
                         <p className="text-base text-neutral-600">
-                          Süslenmek ve nazardan korunmak için insan, hayvan canlı ve cansız birçok eşyanın пър bakışta göze çarpacak yerine takılan objelerdir. Cam, porselen, tahta, sedef, altın, gümüş vb. materyallerden yapılan boncuklar oyalarda süsleme amaçlı sıkça kullanılır.
+                          {t.bead_text}
                         </p>
                       </div>
                     </div>
@@ -452,7 +460,7 @@ export default function App() {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.9, y: 20 }}
               transition={{ type: "spring", damping: 25, stiffness: 300 }}
-              className="relative w-full max-w-4xl max-h-[90vh] bg-neutral-900 border border-neutral-800 rounded-3xl shadow-2xl overflow-y-auto overflow-x-hidden flex flex-col z-10"
+              className="relative w-[95vw] md:w-full max-w-4xl max-h-[90vh] bg-neutral-900 border border-neutral-800 rounded-3xl shadow-2xl overflow-y-auto overflow-x-hidden flex flex-col z-10"
               style={{ boxShadow: `0 20px 40px -10px ${activeData.color}40` }}
             >
               <button 
