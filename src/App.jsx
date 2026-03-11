@@ -86,21 +86,22 @@ export default function App() {
     <div className="min-h-screen bg-neutral-950 text-neutral-100 font-sans selection:bg-indigo-500 selection:text-white">
       
       {/* Header */}
-      <header className="pt-8 sm:pt-12 pb-4 sm:pb-8 px-4 sm:px-6 text-center relative w-full">
+      <header className="pt-8 sm:pt-12 pb-4 sm:pb-8 px-4 sm:px-6 text-center relative w-full border-b border-white/10 mb-4 bg-neutral-900/50 backdrop-blur-sm shadow-sm" style={{ backgroundImage: 'radial-gradient(#333 1px, transparent 1px)', backgroundSize: '20px 20px' }}>
         {/* Left Logo */}
-        <div className="absolute top-4 left-4 sm:top-6 sm:left-8 z-20">
-          <img src="/logo.jpg" alt="MBA Okulları" className="h-12 sm:h-20 w-auto object-contain rounded-lg shadow-lg" />
+        <div className="absolute top-4 left-4 sm:top-6 sm:left-8 z-20 bg-white/90 p-1 sm:p-2 rounded-xl shadow-lg backdrop-blur-sm h-12 w-24 sm:h-20 sm:w-32 flex items-center justify-center overflow-hidden">
+          <img src="/mba logo.jpg" alt="Logo 1" className="max-h-full max-w-full object-contain" onError={(e) => { e.target.style.display='none'; e.target.parentNode.innerHTML='<span class="text-xs text-black font-bold">Logo 1</span>' }} />
         </div>
         
         {/* Right Logo */}
-        <div className="absolute top-4 right-4 sm:top-6 sm:right-8 z-20 bg-white/90 p-2 rounded-xl shadow-lg backdrop-blur-sm">
-          <img src="/logo2.png" alt="TÜBİTAK" className="h-10 sm:h-16 w-auto object-contain" />
+        <div className="absolute top-4 right-4 sm:top-6 sm:right-8 z-20 bg-white/90 p-1 sm:p-2 rounded-xl shadow-lg backdrop-blur-sm h-12 w-24 sm:h-20 sm:w-32 flex items-center justify-center overflow-hidden">
+          <img src="/tubitak logo.jpg" alt="Logo 2" className="max-h-full max-w-full object-contain" onError={(e) => { e.target.style.display='none'; e.target.parentNode.innerHTML='<span class="text-xs text-black font-bold">Logo 2</span>' }} />
         </div>
         
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
+          className="mt-14 sm:mt-4"
         >
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-2 sm:mb-4">
             <MapPin className="w-6 h-6 sm:w-8 sm:h-8 text-indigo-400" />
@@ -108,7 +109,7 @@ export default function App() {
               İğnenin Ucundaki Sessiz Dil
             </h1>
           </div>
-          <p className="text-neutral-400 text-base sm:text-lg max-w-xl mx-auto px-2">
+          <p className="text-neutral-300 text-base sm:text-lg max-w-xl mx-auto px-2 font-medium">
             Yedi bölgenin eşsiz güzelliklerini, kültürünü ve tarihini harita üzerinden keşfedin.
           </p>
         </motion.div>
@@ -120,7 +121,7 @@ export default function App() {
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1, delay: 0.2 }}
-          className="relative z-10 w-full h-full flex items-center justify-center"
+          className="relative z-10 w-full h-full flex items-center justify-center bg-black/20 p-4 sm:p-8 rounded-3xl border border-white/5 backdrop-blur-sm"
         >
           <TurkeyMap 
             onRegionClick={handleRegionClick} 
@@ -130,7 +131,7 @@ export default function App() {
         </motion.div>
         
         {/* Glow effect behind map */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3/4 h-3/4 bg-indigo-500/20 blur-[120px] rounded-full pointer-events-none -z-0"></div>
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3/4 h-3/4 bg-violet-600/10 blur-[100px] rounded-full pointer-events-none -z-0"></div>
       </main>
 
       {/* Modal Overlay */}
