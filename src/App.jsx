@@ -86,31 +86,31 @@ export default function App() {
     <div className="min-h-screen bg-neutral-950 text-neutral-100 font-sans selection:bg-indigo-500 selection:text-white">
       
       {/* Header */}
-      <header className="pt-12 pb-8 px-6 text-center">
+      <header className="pt-8 sm:pt-12 pb-4 sm:pb-8 px-4 sm:px-6 text-center">
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
-          <div className="flex items-center justify-center gap-3 mb-4">
-            <MapPin className="w-8 h-8 text-indigo-400" />
-            <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">
-              Türkiye Keşif Haritası
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-2 sm:mb-4">
+            <MapPin className="w-6 h-6 sm:w-8 sm:h-8 text-indigo-400" />
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">
+              İğnenin Ucundaki Sessiz Dil
             </h1>
           </div>
-          <p className="text-neutral-400 text-lg max-w-xl mx-auto">
+          <p className="text-neutral-400 text-base sm:text-lg max-w-xl mx-auto px-2">
             Yedi bölgenin eşsiz güzelliklerini, kültürünü ve tarihini harita üzerinden keşfedin.
           </p>
         </motion.div>
       </header>
 
-      {/* Main Map Content */}
-      <main className="px-6 py-10 relative">
+      {/* Main Map Content - Full screen fit and responsive wrapper */}
+      <main className="px-2 sm:px-6 py-4 sm:py-10 relative flex-1 flex flex-col items-center justify-center min-h-[50vh] sm:min-h-[auto] w-full max-w-7xl mx-auto">
         <motion.div 
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1, delay: 0.2 }}
-          className="relative z-10"
+          className="relative z-10 w-full h-full flex items-center justify-center"
         >
           <TurkeyMap 
             onRegionClick={handleRegionClick} 

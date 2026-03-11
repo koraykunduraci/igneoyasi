@@ -11,8 +11,8 @@ export default function TurkeyMap({ onRegionClick, activeRegion, regionData }) {
   };
 
   return (
-    <div className="w-full max-w-5xl mx-auto drop-shadow-xl relative">
-      <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" viewBox="0 0 1007.478 527.323" >
+    <div className="w-full h-full flex items-center justify-center max-w-7xl mx-auto drop-shadow-xl relative p-2 sm:p-4">
+      <svg className="w-full h-auto max-h-[70vh] object-contain" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" viewBox="0 0 1007.478 527.323" >
 
 			<g 
           className="cursor-pointer transition-all duration-300"
