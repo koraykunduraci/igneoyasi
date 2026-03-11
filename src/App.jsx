@@ -94,10 +94,10 @@ export default function App() {
     >
       
       {/* Header */}
-      <header className="pt-8 sm:pt-14 pb-4 sm:pb-8 px-4 sm:px-6 text-center relative w-full mb-4">
-        {/* Left Logo */}
+      <header className="pt-2 sm:pt-4 pb-4 sm:pb-8 px-4 sm:px-6 text-center relative w-full mb-4">
+        {/* Left Logo Place - Removed per request */}
         <div className="absolute top-4 left-4 sm:top-6 sm:left-8 z-20 h-[72px] w-[144px] sm:h-[120px] sm:w-[192px] flex items-center justify-center overflow-visible">
-          <img src="/mba logo.jpg" alt="Logo 1" className="max-h-full max-w-full object-contain mix-blend-multiply" onError={(e) => { e.target.style.display='none'; e.target.parentNode.innerHTML='<span class="text-xs text-black font-bold">Logo 1</span>' }} />
+          {/* Logo removed */}
         </div>
         
         {/* Right Logo */}
@@ -337,10 +337,7 @@ export default function App() {
                     transition={{ delay: 0.2 }}
                     className="flex items-center gap-3 mb-2"
                   >
-                    <div className="w-3 h-3 rounded-full" style={{ backgroundColor: activeData.color }}></div>
-                    <span style={{ color: activeData.color }} className="font-semibold tracking-wider uppercase text-sm">
-                      Bölgelerimiz
-                    </span>
+                    <div className="w-4 h-4 rounded-full" style={{ backgroundColor: activeData.color }}></div>
                   </motion.div>
                   <motion.h2 
                     initial={{ y: 20, opacity: 0 }}
