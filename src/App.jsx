@@ -95,9 +95,9 @@ export default function App() {
       
       {/* Header */}
       <header className="pt-2 sm:pt-4 pb-4 sm:pb-8 px-4 sm:px-6 text-center relative w-full mb-4">
-        {/* Left Logo Place - Removed per request */}
+        {/* Left Logo */}
         <div className="absolute top-4 left-4 sm:top-6 sm:left-8 z-20 h-[72px] w-[144px] sm:h-[120px] sm:w-[192px] flex items-center justify-center overflow-visible">
-          {/* Logo removed */}
+          <img src="/mba logo.jpg" alt="Logo 1" className="max-h-full max-w-full object-contain mix-blend-multiply" onError={(e) => { e.target.style.display='none'; e.target.parentNode.innerHTML='<span class="text-xs text-black font-bold">Logo 1</span>' }} />
         </div>
         
         {/* Right Logo */}
@@ -323,31 +323,22 @@ export default function App() {
                 <X className="w-5 h-5" />
               </button>
 
-              <div className="relative h-64 sm:h-80 w-full shrink-0">
-                <img 
-                  src={activeData.image} 
-                  alt={activeData.name} 
-                  className="w-full h-full object-cover"
+              <div className="pt-10 sm:pt-12 px-6 sm:px-8 shrink-0 flex items-center gap-4">
+                <motion.div 
+                  initial={{ scale: 0, opacity: 0 }}
+                  animate={{ scale: 1, opacity: 1 }}
+                  transition={{ delay: 0.2 }}
+                  className="w-5 h-5 rounded-full shadow-md"
+                  style={{ backgroundColor: activeData.color }}
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-neutral-900 via-neutral-900/40 to-transparent" />
-                <div className="absolute bottom-0 left-0 p-6 sm:p-8">
-                  <motion.div 
-                    initial={{ x: -20, opacity: 0 }}
-                    animate={{ x: 0, opacity: 1 }}
-                    transition={{ delay: 0.2 }}
-                    className="flex items-center gap-3 mb-2"
-                  >
-                    <div className="w-4 h-4 rounded-full" style={{ backgroundColor: activeData.color }}></div>
-                  </motion.div>
-                  <motion.h2 
-                    initial={{ y: 20, opacity: 0 }}
-                    animate={{ y: 0, opacity: 1 }}
-                    transition={{ delay: 0.3 }}
-                    className="text-3xl sm:text-4xl font-bold text-white"
-                  >
-                    {activeData.name}
-                  </motion.h2>
-                </div>
+                <motion.h2 
+                  initial={{ x: -20, opacity: 0 }}
+                  animate={{ x: 0, opacity: 1 }}
+                  transition={{ delay: 0.3 }}
+                  className="text-3xl sm:text-4xl font-bold text-white tracking-tight"
+                >
+                  {activeData.name}
+                </motion.h2>
               </div>
 
               <div className="p-6 sm:p-8 flex flex-col gap-8">
