@@ -153,7 +153,7 @@ export default function App() {
               İğnenin Ucundaki Sessiz Dil
             </h1>
           </div>
-          <p className="text-neutral-600 text-base sm:text-lg max-w-2xl mx-auto px-2 font-medium">
+          <p className="text-neutral-600 text-base sm:text-lg max-w-2xl mx-auto px-2 font-medium text-justify">
             Sözün bittiği yerde iğnenin konuştuğu; Anadolu kadınlarının sevincini, hüznünü ve umudunu ilmek ilmek işlediği oya kültürünü haritada keşfedin.
           </p>
         </motion.div>
@@ -227,7 +227,7 @@ export default function App() {
                 <X className="w-5 h-5" />
               </button>
 
-              <div className="p-8 sm:p-12 overflow-y-auto prose prose-neutral prose-headings:text-neutral-900 prose-p:text-neutral-700 max-w-none text-left">
+              <div className="p-8 sm:p-12 overflow-y-auto prose prose-neutral prose-headings:text-neutral-900 prose-p:text-neutral-700 prose-p:text-justify max-w-none text-left">
                 {infoModal === 'onbilgi' && (
                   <>
                     <div className="text-center mb-10">
@@ -383,7 +383,7 @@ export default function App() {
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.4 }}
-                  className="text-neutral-300 text-lg leading-relaxed mb-4"
+                  className="text-neutral-300 text-lg leading-relaxed mb-4 text-justify"
                 >
                   {activeData.text}
                 </motion.p>
@@ -401,7 +401,7 @@ export default function App() {
                           <div className="w-2 h-2 rounded-full" style={{ backgroundColor: activeData.color }}></div>
                           {oya.isim}
                         </h4>
-                        <p className="text-neutral-400 text-sm leading-relaxed">
+                        <p className="text-neutral-400 text-sm leading-relaxed text-justify">
                           {oya.tanim}
                         </p>
                       </div>
