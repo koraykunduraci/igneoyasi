@@ -9,35 +9,35 @@ const REGION_DATA = {
     color: '#3b82f6',
     image: 'https://images.unsplash.com/photo-1541432901042-2d8bd64b4a9b?auto=format&fit=crop&w=800&q=80',
     text: 'Marmara Bölgesi, Türkiye\'nin kuzeybatısında yer alan, tarihi yarımada ve doğal güzellikleri ile ünlü, sanayi ve kültürel açıdan en gelişmiş bölgesidir. İstanbul gibi metropolleri barındıran bölge, iki kıtayı birbirine bağlar.',
-    video: 'https://vjs.zencdn.net/v/oceans.mp4'
+    video: '/marmara nazar.mp4'
   },
   'ege': {
     name: 'Ege Bölgesi',
     color: '#10b981',
     image: 'https://images.unsplash.com/photo-1502095819777-62f79fb650fe?auto=format&fit=crop&w=800&q=80',
     text: 'Ege Bölgesi, zeytin ağaçları, muhteşem koyları ve antik kentleriyle Türkiye\'nin tatil cennetidir. Efes Antik Kenti ve travertenler gibi dünya mirası zenginliklerine sahiptir.',
-    video: 'https://vjs.zencdn.net/v/oceans.mp4'
+    video: '/ege pullu oya.mp4'
   },
   'akdeniz': {
     name: 'Akdeniz Bölgesi',
     color: '#ef4444',
     image: 'https://images.unsplash.com/photo-1534063230623-ac4bc8586ea2?auto=format&fit=crop&w=800&q=80',
     text: 'Akdeniz Bölgesi, uçsuz bucaksız plajları, Toros Dağları ve sıcacık iklimiyle harika bir bölgedir. Turunçgil bahçeleri ve tarihi kalıntılarıyla eşsiz bir deneyim sunar.',
-    video: 'https://vjs.zencdn.net/v/oceans.mp4'
+    video: '/akdeniz halka boncuk.mp4'
   },
   'ic-anadolu': {
     name: 'İç Anadolu Bölgesi',
     color: '#f59e0b',
     image: 'https://images.unsplash.com/photo-1563212046-24eeb64f51e1?auto=format&fit=crop&w=800&q=80',
     text: 'İç Anadolu, bozkırın ortasında yükselen Kapadokya peri bacaları ve köklü tarihi ile medeniyetin beşiğidir. Türkiye\'nin tahıl ambarı olarak da bilinir.',
-    video: 'https://vjs.zencdn.net/v/oceans.mp4'
+    video: '/icanadolu citi piti.mp4'
   },
   'karadeniz': {
     name: 'Karadeniz Bölgesi',
     color: '#06b6d4',
     image: 'https://images.unsplash.com/photo-1587313361138-03828949826f?auto=format&fit=crop&w=800&q=80',
     text: 'Karadeniz Bölgesi, yemyeşil doğası, hırçın denizi ve yaylalarıyla büyüleyici bir atmosfere sahiptir. Çay ve fındık bahçeleriyle meşhurdur.',
-    video: 'https://vjs.zencdn.net/v/oceans.mp4'
+    video: '/karadeniz pullu boncuk.mp4'
   },
   'dogu-anadolu': {
     name: 'Doğu Anadolu Bölgesi',
@@ -100,7 +100,7 @@ export default function App() {
         
         {/* Right Logo */}
         <div className="absolute top-4 right-4 sm:top-6 sm:right-8 z-20 bg-white p-1 sm:p-2 rounded-xl shadow-lg h-12 w-24 sm:h-20 sm:w-32 flex items-center justify-center overflow-hidden">
-          <img src="/tubitak logo.jpg" alt="Logo 2" className="max-h-full max-w-full object-contain" onError={(e) => { e.target.style.display='none'; e.target.parentNode.innerHTML='<span class="text-xs text-black font-bold">Logo 2</span>' }} />
+          <img src="/tubitak logo.png" alt="Logo 2" className="max-h-full max-w-full object-contain" onError={(e) => { e.target.style.display='none'; e.target.parentNode.innerHTML='<span class="text-xs text-black font-bold">Logo 2</span>' }} />
         </div>
         
         <motion.div
