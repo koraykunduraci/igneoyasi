@@ -147,7 +147,7 @@ export default function App() {
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
           onClick={() => setInfoModal('onbilgi')}
-          className="flex items-center gap-2 px-6 py-3 bg-white/80 hover:bg-white text-neutral-800 rounded-full shadow-md hover:shadow-lg transition-all border border-neutral-200 backdrop-blur-sm font-semibold text-sm sm:text-base"
+          className="cursor-pointer flex items-center gap-2 px-6 py-3 bg-white/80 hover:bg-white text-neutral-800 rounded-full shadow-md hover:shadow-lg transition-all border border-neutral-200 backdrop-blur-sm font-semibold text-sm sm:text-base"
         >
           <BookOpen className="w-5 h-5 text-orange-500" />
           Proje Ön Bilgi
@@ -157,7 +157,7 @@ export default function App() {
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
           onClick={() => setInfoModal('detay')}
-          className="flex items-center gap-2 px-6 py-3 bg-white/80 hover:bg-white text-neutral-800 rounded-full shadow-md hover:shadow-lg transition-all border border-neutral-200 backdrop-blur-sm font-semibold text-sm sm:text-base"
+          className="cursor-pointer flex items-center gap-2 px-6 py-3 bg-white/80 hover:bg-white text-neutral-800 rounded-full shadow-md hover:shadow-lg transition-all border border-neutral-200 backdrop-blur-sm font-semibold text-sm sm:text-base"
         >
           <FileText className="w-5 h-5 text-rose-500" />
           Proje Detay
