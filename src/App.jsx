@@ -9,40 +9,38 @@ const REGION_DATA = {
     color: '#3b82f6',
     image: 'https://images.unsplash.com/photo-1541432901042-2d8bd64b4a9b?auto=format&fit=crop&w=800&q=80',
     text: 'Marmara Bölgesi, Türkiye\'nin kuzeybatısında yer alan, tarihi yarımada ve doğal güzellikleri ile ünlü, sanayi ve kültürel açıdan en gelişmiş bölgesidir. İstanbul gibi metropolleri barındıran bölge, iki kıtayı birbirine bağlar.',
-    video: '/marmara nazar.mp4',
-    orientation: 'horizontal'
+    videos: [{ src: '/marmara nazar.mp4', orientation: 'horizontal' }]
   },
   'ege': {
     name: 'Ege Bölgesi',
     color: '#10b981',
     image: 'https://images.unsplash.com/photo-1502095819777-62f79fb650fe?auto=format&fit=crop&w=800&q=80',
     text: 'Ege Bölgesi, zeytin ağaçları, muhteşem koyları ve antik kentleriyle Türkiye\'nin tatil cennetidir. Efes Antik Kenti ve travertenler gibi dünya mirası zenginliklerine sahiptir.',
-    video: '/ege pullu oya.mp4',
-    orientation: 'vertical'
+    videos: [{ src: '/ege pullu oya.mp4', orientation: 'vertical' }]
   },
   'akdeniz': {
     name: 'Akdeniz Bölgesi',
     color: '#ef4444',
     image: 'https://images.unsplash.com/photo-1534063230623-ac4bc8586ea2?auto=format&fit=crop&w=800&q=80',
     text: 'Akdeniz Bölgesi, uçsuz bucaksız plajları, Toros Dağları ve sıcacık iklimiyle harika bir bölgedir. Turunçgil bahçeleri ve tarihi kalıntılarıyla eşsiz bir deneyim sunar.',
-    video: '/akdeniz halka boncuk.mp4',
-    orientation: 'vertical'
+    videos: [
+      { src: '/akdeniz halka boncuk.mp4', orientation: 'vertical' },
+      { src: '/akdeniz yıldız oyası.mp4', orientation: 'vertical' }
+    ]
   },
   'ic-anadolu': {
     name: 'İç Anadolu Bölgesi',
     color: '#f59e0b',
     image: 'https://images.unsplash.com/photo-1563212046-24eeb64f51e1?auto=format&fit=crop&w=800&q=80',
     text: 'İç Anadolu, bozkırın ortasında yükselen Kapadokya peri bacaları ve köklü tarihi ile medeniyetin beşiğidir. Türkiye\'nin tahıl ambarı olarak da bilinir.',
-    video: '/icanadolu citi piti.mp4',
-    orientation: 'horizontal'
+    videos: [{ src: '/icanadolu citi piti.mp4', orientation: 'horizontal' }]
   },
   'karadeniz': {
     name: 'Karadeniz Bölgesi',
     color: '#06b6d4',
     image: 'https://images.unsplash.com/photo-1587313361138-03828949826f?auto=format&fit=crop&w=800&q=80',
     text: 'Karadeniz Bölgesi, yemyeşil doğası, hırçın denizi ve yaylalarıyla büyüleyici bir atmosfere sahiptir. Çay ve fındık bahçeleriyle meşhurdur.',
-    video: '/karadeniz pullu boncuk.mp4',
-    orientation: 'vertical'
+    videos: [{ src: '/karadeniz pullu boncuk.mp4', orientation: 'vertical' }]
   },
   'dogu-anadolu': {
     name: 'Doğu Anadolu Bölgesi',
@@ -58,32 +56,60 @@ const REGION_DATA = {
   }
 };
 
+const VideoPlayer = ({ data }) => {
+  const [isPlaying, setIsPlaying] = useState(false);
+  const vRef = useRef(null);
+
+  const togglePlay = () => {
+    setIsPlaying(true);
+    if (vRef.current) vRef.current.play();
+  };
+
+  return (
+    <motion.div 
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay: 0.5 }}
+      className={`relative rounded-2xl overflow-hidden bg-black border border-neutral-800 shrink-0 ${
+        data.orientation === 'vertical' ? 'aspect-[9/16] w-full max-w-[340px] mx-auto min-h-[400px]' : 'aspect-video w-full'
+      } group`}
+    >
+      <video 
+        ref={vRef}
+        src={data.src} 
+        className="w-full h-full object-cover"
+        controls={isPlaying}
+        playsInline
+        onPause={() => setIsPlaying(false)}
+        onPlay={() => setIsPlaying(true)}
+      />
+      
+      {!isPlaying && (
+        <div className="absolute inset-0 flex items-center justify-center bg-black/40 group-hover:bg-black/20 transition-colors duration-300">
+          <button 
+            onClick={togglePlay}
+            className="w-20 h-20 flex items-center justify-center bg-white/10 hover:bg-white/20 hover:scale-110 backdrop-blur-md border border-white/20 rounded-full transition-all duration-300 text-white shadow-lg"
+          >
+            <Play className="w-8 h-8 ml-1" fill="currentColor" />
+          </button>
+        </div>
+      )}
+    </motion.div>
+  );
+};
+
 export default function App() {
   const [activeRegion, setActiveRegion] = useState(null);
-  const [infoModal, setInfoModal] = useState(null); // 'onbilgi' | 'detay' | null
-  const [isVideoPlaying, setIsVideoPlaying] = useState(false);
-  const videoRef = useRef(null);
+  const [infoModal, setInfoModal] = useState(null);
 
   const activeData = activeRegion ? REGION_DATA[activeRegion] : null;
 
   const handleRegionClick = (region) => {
     setActiveRegion(region);
-    setIsVideoPlaying(false);
   };
 
   const handleClose = () => {
     setActiveRegion(null);
-    setIsVideoPlaying(false);
-    if (videoRef.current) {
-      videoRef.current.pause();
-    }
-  };
-
-  const handlePlayVideo = () => {
-    setIsVideoPlaying(true);
-    if (videoRef.current) {
-      videoRef.current.play();
-    }
   };
 
   return (
@@ -354,36 +380,12 @@ export default function App() {
                   {activeData.text}
                 </motion.p>
 
-                {activeData.video && (
-                  <motion.div 
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.5 }}
-                    className={`relative rounded-2xl overflow-hidden bg-black border border-neutral-800 ${
-                      activeData.orientation === 'vertical' ? 'aspect-[9/16] w-full max-w-[340px] mx-auto' : 'aspect-video'
-                    } group`}
-                  >
-                    <video 
-                      ref={videoRef}
-                      src={activeData.video} 
-                      className="w-full h-full object-cover"
-                      controls={isVideoPlaying}
-                      playsInline
-                      onPause={() => setIsVideoPlaying(false)}
-                      onPlay={() => setIsVideoPlaying(true)}
-                    />
-                    
-                    {!isVideoPlaying && (
-                      <div className="absolute inset-0 flex items-center justify-center bg-black/40 group-hover:bg-black/20 transition-colors duration-300">
-                        <button 
-                          onClick={handlePlayVideo}
-                          className="w-20 h-20 flex items-center justify-center bg-white/10 hover:bg-white/20 hover:scale-110 backdrop-blur-md border border-white/20 rounded-full transition-all duration-300 text-white"
-                        >
-                          <Play className="w-8 h-8 ml-1" fill="currentColor" />
-                        </button>
-                      </div>
-                    )}
-                  </motion.div>
+                {activeData.videos && activeData.videos.length > 0 && (
+                  <div className={`grid grid-cols-1 ${activeData.videos.length > 1 ? 'md:grid-cols-2' : ''} gap-6 w-full items-center`}>
+                    {activeData.videos.map((vid, idx) => (
+                      <VideoPlayer key={idx} data={vid} />
+                    ))}
+                  </div>
                 )}
               </div>
 
