@@ -179,26 +179,35 @@ export default function App() {
       </main>
 
       {/* Footer Navigation */}
-      <footer className="w-full pb-8 pt-4 flex items-center justify-center gap-4 relative z-20">
-        <motion.button
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-          onClick={() => setInfoModal('onbilgi')}
-          className="cursor-pointer flex items-center gap-2 px-6 py-3 bg-white/80 hover:bg-white text-neutral-800 rounded-full shadow-md hover:shadow-lg transition-all border border-neutral-200 backdrop-blur-sm font-semibold text-sm sm:text-base"
+      <footer className="w-full pb-8 pt-4 flex flex-col items-center justify-center gap-4 relative z-20">
+        <div className="flex items-center justify-center gap-4">
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            onClick={() => setInfoModal('onbilgi')}
+            className="cursor-pointer flex items-center gap-2 px-6 py-3 bg-white/80 hover:bg-white text-neutral-800 rounded-full shadow-md hover:shadow-lg transition-all border border-neutral-200 backdrop-blur-sm font-semibold text-sm sm:text-base"
+          >
+            <BookOpen className="w-5 h-5 text-orange-500" />
+            Proje Ön Bilgi
+          </motion.button>
+          
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            onClick={() => setInfoModal('detay')}
+            className="cursor-pointer flex items-center gap-2 px-6 py-3 bg-white/80 hover:bg-white text-neutral-800 rounded-full shadow-md hover:shadow-lg transition-all border border-neutral-200 backdrop-blur-sm font-semibold text-sm sm:text-base"
+          >
+            <FileText className="w-5 h-5 text-rose-500" />
+            Proje Detay
+          </motion.button>
+        </div>
+
+        <button
+          onClick={() => setInfoModal('arastirma')}
+          className="text-neutral-500 hover:text-neutral-800 text-sm border-b border-transparent hover:border-neutral-800 transition-colors mt-2"
         >
-          <BookOpen className="w-5 h-5 text-orange-500" />
-          Proje Ön Bilgi
-        </motion.button>
-        
-        <motion.button
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-          onClick={() => setInfoModal('detay')}
-          className="cursor-pointer flex items-center gap-2 px-6 py-3 bg-white/80 hover:bg-white text-neutral-800 rounded-full shadow-md hover:shadow-lg transition-all border border-neutral-200 backdrop-blur-sm font-semibold text-sm sm:text-base"
-        >
-          <FileText className="w-5 h-5 text-rose-500" />
-          Proje Detay
-        </motion.button>
+          Akademik Araştırma Metni
+        </button>
       </footer>
 
       {/* Info Modals */}
@@ -323,6 +332,88 @@ export default function App() {
                       </div>
                     </div>
 
+                  </>
+                )}
+
+                {infoModal === 'arastirma' && (
+                  <>
+                    <div className="text-center mb-10">
+                      <h1 className="text-3xl sm:text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-neutral-600 to-neutral-900 mb-4 inline-block">Oyaların Genel Özellikleri ve Tarihsel Gelişimi</h1>
+                      <h2 className="text-xl font-medium text-neutral-500">Akademik Araştırma Metni</h2>
+                    </div>
+
+                    <h3 className="text-2xl font-bold border-b pb-2 mb-4">Önsöz</h3>
+                    <p className="text-lg leading-relaxed mb-6">
+                      El sanatları bir milletin kültürünü temsil etmekte ve tanıtmaktadır. Bu nedenle el sanatları ürünleri de o ülkenin kültürel kimliğinin en canlı belgeleridir. Bir ülkenin gelenek ve göreneklerinin yaşama biçiminin kuşaktan kuşağa aktarılmasında, gelişerek devam etmesinde en büyük rolü yine el sanatları almaktadır.
+                    </p>
+                    <p className="text-lg leading-relaxed mb-8">
+                      Geleneksel el sanatı ürünlerimiz içinde en zengin çeşitleri bulunanı kuşkusuz oyalardır. Çünkü Anadolu kadını oyasız yazma örtmez. Çeyiz geleneğinde bile oyaların yeri büyüktür. Her genç kızın çeyizinde ailenin ekonomik durumuna göre 50-100 arası oyalı tülbent bulunur. Bu oyaların bir bölümü gelinin ve damadın yakınlarına hediye olarak dağıtılır. En güzel oyalı yazmalar kaynana ve görümcelere verilir. Ayrıca düğünden sonra gelin görmeye gelen konuklara da oyalı yazmalar dağıtılır. Bu geleneğin günümüze oya çeşitlerini zenginleştirerek geldiği ve bölgeden bölgeye, şehirden şehre değişerek renkli bir mozaik sunduğu görülmektedir.
+                    </p>
+                    <p className="text-lg leading-relaxed mb-8">
+                      Bizler de unutulmaya yüz tutmuş geleneksel el sanatlarımızı tekrar gün yüzüne çıkararak daha önce belli bölgelerle sınırlı kalmış araştırmalar ve yazılardan derlediğimiz bilgilerle Anadolu’nun tüm bölgelerini bir çatı alında, toplu bir kaynak olarak sunmayı; günümüzde kullanılır yazılı bir sözlüğe dönüştürüp gerek oyalarımızın unutulmaması ve yaşatılması adına gerekse oyalarımızdaki motiflerin hangi anlamda hangi sembolde kullanıldıklarını bölgesel olarak teknoloji destekli tek tek motiflerin anlamlarını, teknik özelliklerini vb. çalışmalarla sözlük yaparak hem sanatın hem de motiflerin taşıdığı kültürel mirası gün yüzüne çıkarmayı hedefliyoruz.
+                    </p>
+
+                    <h3 className="text-2xl font-bold border-b pb-2 mb-4 mt-8">Giriş</h3>
+                    <p className="text-lg leading-relaxed mb-6">
+                      Anadolu’nun zengin kültürel yapısı içerisinde, kadını en çok ilgilendiren ve kadın tarafından üretilen el sanatlarından birisi olarak bilinen oyalar... Binlerce yıllık köklü Türk kültürü içerisindeki varlığını, gelenekler ve görenekler yoluyla kuşaktan kuşağa aktararak koruyabilmiş, özgün el sanatlarımız arasındadır. Kadının, doğada gördüğü güzellikleri, üzerinde bulundurma isteğiyle başlayan bu küçük uğraş, bireysel bir isteğin karşılanmasının yanı sıra toplum tarafından da oldukça beğenilen ve tercih edilen bir kültür ürünü olarak, çağlardan beri Türk kadını tarafından yapıla gelen bir el sanatı olmuştur.
+                    </p>
+                    <p className="text-lg leading-relaxed mb-6">
+                      Anadolu Türk kadınını, yaşadığı çevre ve sahip olduğu sosyal konumuna bağlı olarak, bozkırın ortasında mağrur duran, üzerinde bin bir çeşit çiçek ve bitkinin yetiştiği yüce bir dağa benzetebiliriz. Baharın canlılığını, yazın bereketini ve sonbaharın matemini kendi zevkine göre kıyafetlerinde yeniden oluşturan Anadolu kadını, zirveye yani o yüce dağın başına daha da ayrı bir özen göstermiştir. Papatyaları, nergisleri, gülleri, laleleri ve üzerinde bulunmasını istediği diğer her şeyi, narin parmaklarıyla işlemiştir, başını saran örtünün kenarlarına. Bunu yaparken emek harcamış, göz nuru dökmüş ve her bir ilmekle kendi iç dünyasını yansıtmıştır şaheserlerinde. Bundan dolayıdır ki oyalar, çağlar boyunca kadının diline tercüman, yüreğine sırdaş ve güzelliğine zarafet katan ayrılmaz bir parça olmuştur. Bu nedenle de oyaların, Türk kadınının yanındaki varlığı da ebedi olacaktır.
+                    </p>
+                    <p className="text-lg leading-relaxed mb-6">
+                      Oyaların, zaman içerisinde kadınlar tarafından başka amaçlar için kullanıldığını, Anadolu’daki farklı uygulamalarda görebilmekteyiz. Oyalar, her ne kadar süslenme kaygısıyla oluşturulmuş bir el sanatı gibi olsa da; toplumun yaşamış olduğu coğrafi, sosyal ve ekonomik faktörlere göre şekil alabilen özelliğiyle de kendisine farklı alanlarda yer edinmiştir. El sanatları üzerine yapılan araştırmalar ışığında, Anadolu’nun bazı kırsal bölgelerinde oyaların, kadınlar tarafından bir iletişim aracı olarak kullanıldığını görmekteyiz. Aile ya da toplum içerisinde duygu, düşünce ve isteğini sözlü olarak ifade etmesi ayıplanan kadınlar, bu durumu aşmak ve ahlaken saygısız davranmamak amacıyla işledikleri oyalara, kadınların anlayacağı anlamlar yüklemişlerdir. Bu sayede emek ve zaman harcayarak oluşturulan oyalar; duygu, düşünce ve isteğin anlatıldığı sembollere; sembollerden de kelimelere dönüşerek halk kültürü içerisinde maddi ve manevi unsurları bünyesinde barındıran bir değer olarak karşımıza çıkmaktadır.
+                    </p>
+                    <p className="text-lg leading-relaxed mb-6">
+                      Türk kadınının, çevresinde gördüğü objelere birer anlam yükleyerek oluşturduğu bu sembolik anlatım dili, ortak bir dil olarak, o yörede yaşayan kadınlar tarafından bilinir ve anlaşılır. Bu lisanda kullanılacak simgeler, anlatılmak istenen konuyla alakalı motiflerden seçilirdi ki, anlatımı kolay olsun. Örneğin; Konya yöresindeki kadınlar, işledikleri “Çayır çimen” oyasıyla, kayınvalidesi ile gelinin arasının mutlu ve ferah olmasını simgelemiştir; “Mezar taşı” oya motifiyle iman ve ibadete önem ver, dünya işlerine dalıp gitme mesajını vermiştir. Çoğu yöremizde gördüğümüz ancak Konya yöresinde anlamsal bir özellik kazanarak kullanılan “Biber oyası” ise kadının eşi ile arasının iyi olmadığı mesajını içermiştir.
+                    </p>
+                    <p className="text-lg leading-relaxed mb-6">
+                      Duyguların ve durumların, bu şekilde semboller kullanılarak aktarılması, hem kadının sosyalleşmesini sağlıyordu hem de iç dünyasının dışa vurumunu daha kolay bir hale getiriyordu. Türk kadınının, dünya görüşü ve dünyayı algılayış biçiminin küçük bir el sanatında vücut bulması üretime ve sanatsal beceriye yatkınlığıyla açıklanabilir ancak. Bu yönüyle oyaları, sözlü kültür unsurlarımızda da görebilmekteyiz. Örneğin: Çanakkale yöremize ait; “Çemberimde gül oya, Gülmedim doya doya.” ve Adıyaman yöremize ait; “Kaşın nakış, kirpiğin oya.” türkülerinde olduğu gibi. Gizli bir aşkın sessiz anlatımı ya da aşığın yavuklusuna duyduğu sevginin ve hasret çekenlerin de nişanı olmuştur oya.
+                    </p>
+                    <p className="text-lg leading-relaxed mb-6">
+                      Oyalarda kullanılan motifleri genel olarak sınıflandırdığımızda motiflerin bitki, hayvan ya da geometrik özelliklere sahip simgelerden meydana geldiğini görmekteyiz. Bitkisel motifleri; gül, menekşe, üzüm, mum çiçeği, karanfil oluştururken; hayvansal özelliklere sahip motifleri; kelebek, tırtıl, kurt, kuş gibi hayvanların bütünü ya da bir parçası oluşturur; geometrik motifleriyse keskin hatlara sahip şekiller oluşturmaktadır; yıldız, üçgen, kaya gibi. Yaşanmışlığın izlerini taşıyarak günümüze kadar gelen oyalar, en çok evlenme adetlerimizde karşımıza çıkmaktadır. Belki de bayanlar için değeri, bu yüzden daha çok artmaktadır.
+                    </p>
+                    <p className="text-lg leading-relaxed mb-6">
+                      Birbirinden değerli el işlemeleriyle dolu olan çeyiz sandıkları, emeğin ve göz nurunun da, ta kendisidir. Bu yüzden özeldir ve annenin kızına bıraktığı en değerli mirasıdır. Çeyiz sandığı hazırlama işine, kız çocuğunun doğumuyla birlikte başlanırdı. Bu işleme ne kadar erken zamanda başlanılırsa, kızın evleneceği zamana kadar ki süre içinde, o kadar çok el işi sandığa konurdu. Bu yüzden mahalledeki kadınlar ve yakın akrabalarda bu olaya iştirak eder ve çeyiz sandığına kendi işlemeleriyle katkı sağlardı. Hazırlanan bu el işlemeleri, düğün gününe kadar özenle çeyiz sandığında saklanır. Düğün günü, davul zurna eşliğinde damadın evine taşınarak, bu gelenek bir sonraki kuşağa aktarılırdı.
+                    </p>
+                    <p className="text-lg leading-relaxed mb-8">
+                      Oya ve nakış gibi el sanatları, sosyal hayatta kadınların bir araya geldikleri ve adına “gün” dedikleri oturmalarda, aynı sokağı paylaşan komşu kadınların akşamüstü hava almak için çıktıkları kapı önlerinde, yani birlikte hem sohbet ettikleri hem de vakit geçirdikleri zamanlarda bile ellerinden bırakmadıkları bir uğraştır. İşin özü; el işi işlemek, bir tür vakit geçirme ya da oyalanma aracı olmuştur kadınlar için. Belki de oyalanma kelimesinin kaynağını da, oya işlemelerinde harcanan bu zamanın çokluğu oluşturmaktadır.
+                    </p>
+
+                    <h3 className="text-2xl font-bold border-b pb-2 mb-4 mt-8">Oyanın Tarihsel Gelişimi</h3>
+                    <p className="text-lg leading-relaxed mb-6">
+                      Geleneksel kültürümüzün ve el sanatlarımızın en önemli örneklerinden birisi de oyalardır. Oya; çiçekle örgü sanatının birleşmesinden doğmuş süslemek, süslenmek amacıyla yapılan ve ayrıca taşıdıkları mesajlarla bir iletişim aracı olarak da kullanılan ve tekniği örgü olan bir dantel türüdür. Örücülük sanatının ilk kez nerede, nasıl ve kimler tarafından başlatıldığı kesin olarak bilinmemektedir. Ancak, insanların örtünme ihtiyacını hissettiği zamanla başladığı zevk, beğeni ve yaratıcılık yeteneklerinin artmasıyla gelişme gösterdiği düşünülebilir. "Değişik tarihi belgeler ve mesleki kaynaklar M.Ö. 3-5 bin yıllarını örücülüğün başlangıç tarihi olarak ve Orta Asya, Çin, Mısır’daki yaşamış toplumları da ilk örmeyi uygulayan insanlar" olarak belirtmektedir.
+                    </p>
+                    <p className="text-lg leading-relaxed mb-6">
+                      Örücülük sanatına tarihsel açıdan bakıldığında, çok eski çağlara uzanan tarihi ve Türklere ait ilk belgeleri Orta Asya’da yapılan arkeolojik kazılarda rastlandığı bilinmektedir. M.Ö. 7. ve 8. yüzyıllardan Orta Asya’da yaşayan Hunlara ait Pazarık 2. kurganındaki bulgular arasında örücülük ile ilgili örneklere rastlanmıştır. Doğu’da gelişen örücülük sanatı, ticari gemiler ile tüccarlar tarafından Doğu’dan Batı’ya götürülmüştür. İslam dünyasında yapılan çok renkli çorapları, 12.-16. yüzyıllarda İspanya ve İtalya’da büyük başarıya ulaşarak örgünün kaynağı olmuştur.
+                    </p>
+                    <p className="text-lg leading-relaxed mb-6">
+                      Avrupa’da örücülüğün geliştiği tarihlerde örücülükle ilgili meslekler loncaları kurulmuştur. Loncaya girmek isteyen gençler 3 ile 6 yıl arasında ustaya çıraklık eder ve sonra değişik örgü tekniklerini öğrenmek ve yaratıcılığını geliştirmek amacıyla yabancı ülkelere seyahat ederlerdi. Osmanlı döneminde el sanatlarında durum çok farklı değildi. El sanatları atölyelerinde yapılan ürünlerin Batılı ülkelere de ulaştığı kaynaklardan anlaşılmaktadır. Osmanlı döneminde el sanatları konularda çıraklık eğitimi yapılırken loncalarda yetişen çırakların önlük giyip usta olabilmesi için ustalardan kurulmuş bir komisyonun önünde çeşitli eserler örerek, kendi orijinal motifleri ile uygulamalı sınavdan geçerlerdi.
+                    </p>
+                    <p className="text-lg leading-relaxed mb-8">
+                      Oya bir bezemedir. Süslemek anlamında kullanılan bu sözcük 2. yüzyıl Türklerinde "ev bezendi", Memlük Türklerinde "Oyu", Kırgız Türklerinde "Oyuma" şeklindedir. Osmanlı imparatorluğu’nun her döneminde saray içi, dışı ve Anadolu’da yapılan geleneksel örgü ve oyalara, çok önem verilmiş, Cumhuriyet döneminde yeteri kadar ilgi görmemekle birlikte oyalar günümüze kadar geleneksel yollarla gelebilmiştir.
+                    </p>
+
+                    <h3 className="text-2xl font-bold border-b pb-2 mb-4 mt-8">Kullanılan Malzemeler</h3>
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8 mt-6">
+                      <div className="bg-neutral-50 p-6 rounded-2xl border border-neutral-100">
+                        <h4 className="text-xl font-bold text-neutral-800 mb-2">Pamuk İpliği</h4>
+                        <p className="text-base text-neutral-600">
+                          Pamuk bitkisinden elde edilen pamuk lifi tekstil sanayinde en önemli yeri almaktadır. Yaş mukavemetinin fazlalığı, yıkanmaya dayanaklı olması, hijyenik özelliği, nem tutma yeteneğinin yüksekliği nedeniyledir. En güzel oya dantellerini kadınlarımız pamuk iplikleri ile yapmışlardır.
+                        </p>
+                      </div>
+                      <div className="bg-neutral-50 p-6 rounded-2xl border border-neutral-100">
+                        <h4 className="text-xl font-bold text-neutral-800 mb-2">Sentetik İplik</h4>
+                        <p className="text-base text-neutral-600">
+                          Sentetik liflerin temel maddeleri kömür, petrol, su, azot, gibi son derecede basit maddelerdir. Oya yapımında kullanılan sentetik liflerden elde edilen iplikler parlak, güzel görünüşlü ve çok büklümlüdür. Çile, makara, bobin halinde satılmaktadır.
+                        </p>
+                      </div>
+                      <div className="bg-neutral-50 p-6 rounded-2xl border border-neutral-100">
+                        <h4 className="text-xl font-bold text-neutral-800 mb-2">Boncuk</h4>
+                        <p className="text-base text-neutral-600">
+                          Süslenmek ve nazardan korunmak için insan, hayvan canlı ve cansız birçok eşyanın пър bakışta göze çarpacak yerine takılan objelerdir. Cam, porselen, tahta, sedef, altın, gümüş vb. materyallerden yapılan boncuklar oyalarda süsleme amaçlı sıkça kullanılır.
+                        </p>
+                      </div>
+                    </div>
                   </>
                 )}
               </div>
