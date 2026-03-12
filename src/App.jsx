@@ -124,6 +124,19 @@ export default function App() {
       }}
     >
       
+      {/* Top Left Oya Dictionary Button */}
+      <div className="absolute top-4 left-4 z-50 flex items-center justify-center">
+        <motion.button
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+          onClick={() => setInfoModal('dictionary')}
+          className="cursor-pointer flex items-center gap-2 px-4 py-3 bg-white/80 hover:bg-white text-neutral-800 rounded-full shadow-md hover:shadow-lg transition-all border border-neutral-200 backdrop-blur-sm font-semibold text-sm sm:text-base"
+        >
+          <BookOpen className="w-5 h-5 text-rose-500" />
+          <span className="hidden sm:inline">{t.oya_dictionary_btn}</span>
+        </motion.button>
+      </div>
+
       {/* Top Language Bar */}
       <div className="absolute top-4 right-4 z-50 flex items-center justify-center gap-6 bg-white/80 backdrop-blur-md rounded-full px-4 py-3 border border-neutral-200 shadow-sm">
         <button 
@@ -294,6 +307,25 @@ export default function App() {
                       Tarayıcınız video etiketini desteklemiyor.
                     </video>
                   </div>
+                )}
+
+                {infoModal === 'dictionary' && (
+                  <>
+                    <div className="text-center mb-10">
+                      <h1 className="text-3xl sm:text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-orange-600 to-rose-600 mb-4 inline-block">{t.oya_dictionary_title}</h1>
+                    </div>
+                    
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      {t.oya_terms.map((item, idx) => (
+                        <div key={idx} className="bg-neutral-50 p-6 rounded-2xl border border-neutral-100 shadow-sm hover:shadow-md transition-shadow">
+                          <h4 className="text-xl font-bold text-orange-600 mb-3 border-b border-orange-200 pb-2">{item.term}</h4>
+                          <p className="text-base text-neutral-700 leading-relaxed">
+                            {item.definition}
+                          </p>
+                        </div>
+                      ))}
+                    </div>
+                  </>
                 )}
                 
                 {infoModal === 'onbilgi' && (
