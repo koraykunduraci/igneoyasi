@@ -47,16 +47,16 @@ const REGION_MEDIA = {
 };
 
 const SCHEME_IMAGES = [
-  '/Şema/WhatsApp Image 2026-03-12 at 21.29.53.jpeg',
-  '/Şema/WhatsApp Image 2026-03-12 at 21.29.53 (1).jpeg',
-  '/Şema/WhatsApp Image 2026-03-12 at 21.29.53 (2).jpeg',
-  '/Şema/WhatsApp Image 2026-03-12 at 21.29.53 (3).jpeg',
-  '/Şema/WhatsApp Image 2026-03-12 at 21.29.53 (4).jpeg',
-  '/Şema/WhatsApp Image 2026-03-12 at 21.29.54.jpeg',
-  '/Şema/WhatsApp Image 2026-03-12 at 21.29.54 (1).jpeg',
-  '/Şema/WhatsApp Image 2026-03-12 at 21.29.54 (2).jpeg',
-  '/Şema/WhatsApp Image 2026-03-12 at 21.29.54 (3).jpeg',
-  '/Şema/WhatsApp Image 2026-03-12 at 21.29.54 (4).jpeg'
+  '/sema/scheme_1.jpeg',
+  '/sema/scheme_2.jpeg',
+  '/sema/scheme_3.jpeg',
+  '/sema/scheme_4.jpeg',
+  '/sema/scheme_5.jpeg',
+  '/sema/scheme_6.jpeg',
+  '/sema/scheme_7.jpeg',
+  '/sema/scheme_8.jpeg',
+  '/sema/scheme_9.jpeg',
+  '/sema/scheme_10.jpeg'
 ];
 
 const VideoPlayer = ({ data }) => {

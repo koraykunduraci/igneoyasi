@@ -12,7 +12,7 @@ export const LOCALES = {
     oya_dictionary_title: "Oya Sanatı Sözlüğü",
     oya_dictionary_btn: "Oya Sanatı",
     oya_schemes_title: "Oya Yapım Şemaları",
-    oya_schemes_btn: "Yapım Şemaları",
+    oya_schemes_btn: "Oya Yapım Şemaları",
     oya_terms: [
       { term: "Arpacık", definition: "Oya motifleri arasında köprü kurmak için kullanılan, küçük pirinç tanesi şeklindeki süslemedir." },
       { term: "Boru Tekniği", definition: "Çiçeklerin sap kısmını veya dik duran gövdelerini oluşturmak için iğneyle yapılan silindirik örgü biçimidir." },
@@ -121,7 +121,7 @@ export const LOCALES = {
     oya_dictionary_title: "Oya Art Dictionary",
     oya_dictionary_btn: "The Art of Oya",
     oya_schemes_title: "Oya Crafting Schemes",
-    oya_schemes_btn: "Crafting Schemes",
+    oya_schemes_btn: "Oya Crafting Schemes",
     oya_terms: [
       { term: "Arpacık", definition: "A small, rice-shaped ornament used to build bridges between oya motifs." },
       { term: "Boru Technique (Tube)", definition: "A cylindrical knitting form created with a needle to form the stems or upright bodies of flowers." },
