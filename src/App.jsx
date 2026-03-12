@@ -202,9 +202,18 @@ export default function App() {
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3/4 h-3/4 bg-orange-500/10 blur-[100px] rounded-full pointer-events-none -z-0"></div>
       </main>
 
-
       {/* Footer Navigation */}
       <footer className="w-full pb-8 pt-4 flex flex-col items-center justify-center gap-4 relative z-20">
+        <a 
+          href="/Proje%20Destek%20Mektubu.pdf" 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          title={t.support_letter}
+          className="cursor-pointer flex items-center gap-2 text-neutral-500 hover:text-neutral-800 text-sm md:text-sm underline underline-offset-4 hover:decoration-neutral-800 transition-all font-medium mx-auto text-center"
+        >
+          {t.support_letter}
+        </a>
+
         <motion.button
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
