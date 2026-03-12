@@ -1,6 +1,6 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, Play, BookOpen, FileText } from 'lucide-react';
+import { X, Play, BookOpen, FileText, Image as ImageIcon, ChevronLeft, ChevronRight } from 'lucide-react';
 import TurkeyMap from './MapComponent';
 
 import { LOCALES, OYA_DATA } from './locales';
@@ -45,6 +45,19 @@ const REGION_MEDIA = {
     videos: []
   }
 };
+
+const SCHEME_IMAGES = [
+  '/Şema/WhatsApp Image 2026-03-12 at 21.29.53.jpeg',
+  '/Şema/WhatsApp Image 2026-03-12 at 21.29.53 (1).jpeg',
+  '/Şema/WhatsApp Image 2026-03-12 at 21.29.53 (2).jpeg',
+  '/Şema/WhatsApp Image 2026-03-12 at 21.29.53 (3).jpeg',
+  '/Şema/WhatsApp Image 2026-03-12 at 21.29.53 (4).jpeg',
+  '/Şema/WhatsApp Image 2026-03-12 at 21.29.54.jpeg',
+  '/Şema/WhatsApp Image 2026-03-12 at 21.29.54 (1).jpeg',
+  '/Şema/WhatsApp Image 2026-03-12 at 21.29.54 (2).jpeg',
+  '/Şema/WhatsApp Image 2026-03-12 at 21.29.54 (3).jpeg',
+  '/Şema/WhatsApp Image 2026-03-12 at 21.29.54 (4).jpeg'
+];
 
 const VideoPlayer = ({ data }) => {
   const [isPlaying, setIsPlaying] = useState(false);
@@ -92,6 +105,21 @@ export default function App() {
   const [activeRegion, setActiveRegion] = useState(null);
   const [infoModal, setInfoModal] = useState(null);
   const [lang, setLang] = useState('tr');
+  const [currentSchemeIdx, setCurrentSchemeIdx] = useState(0);
+
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (infoModal === 'schemes') {
+        if (e.key === 'ArrowLeft') {
+          setCurrentSchemeIdx((prev) => (prev > 0 ? prev - 1 : SCHEME_IMAGES.length - 1));
+        } else if (e.key === 'ArrowRight') {
+          setCurrentSchemeIdx((prev) => (prev < SCHEME_IMAGES.length - 1 ? prev + 1 : 0));
+        }
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [infoModal]);
 
   const t = LOCALES[lang];
   
@@ -124,16 +152,25 @@ export default function App() {
       }}
     >
       
-      {/* Top Left Oya Dictionary Button */}
-      <div className="absolute top-4 left-4 z-50 flex items-center justify-center">
+      {/* Top Left Menu Buttons */}
+      <div className="absolute top-4 left-4 z-50 flex flex-col items-start justify-center gap-3">
         <motion.button
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
           onClick={() => setInfoModal('dictionary')}
-          className="cursor-pointer flex items-center gap-2 px-4 py-3 bg-white/80 hover:bg-white text-neutral-800 rounded-full shadow-md hover:shadow-lg transition-all border border-neutral-200 backdrop-blur-sm font-semibold text-sm sm:text-base"
+          className="cursor-pointer flex items-center gap-2 px-4 py-3 bg-white/80 hover:bg-white text-neutral-800 rounded-full shadow-md hover:shadow-lg transition-all border border-neutral-200 backdrop-blur-sm font-semibold text-sm sm:text-base w-full sm:w-auto"
         >
           <BookOpen className="w-5 h-5 text-rose-500" />
           <span className="hidden sm:inline">{t.oya_dictionary_btn}</span>
+        </motion.button>
+        <motion.button
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+          onClick={() => { setInfoModal('schemes'); setCurrentSchemeIdx(0); }}
+          className="cursor-pointer flex items-center gap-2 px-4 py-3 bg-white/80 hover:bg-white text-neutral-800 rounded-full shadow-md hover:shadow-lg transition-all border border-neutral-200 backdrop-blur-sm font-semibold text-sm sm:text-base w-full sm:w-auto"
+        >
+          <ImageIcon className="w-5 h-5 text-orange-500" />
+          <span className="hidden sm:inline">{t.oya_schemes_btn}</span>
         </motion.button>
       </div>
 
@@ -326,6 +363,48 @@ export default function App() {
                       ))}
                     </div>
                   </>
+                )}
+                
+                {infoModal === 'schemes' && (
+                  <div className="w-full h-full flex flex-col items-center justify-center relative min-h-[50vh]">
+                    <div className="text-center mb-6">
+                      <h1 className="text-3xl sm:text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-orange-600 to-rose-600 inline-block">{t.oya_schemes_title}</h1>
+                    </div>
+                    <div className="relative w-full aspect-[4/3] flex items-center justify-center bg-neutral-100 rounded-2xl overflow-hidden border border-neutral-200 group">
+                      <AnimatePresence mode="wait">
+                        <motion.img 
+                          key={currentSchemeIdx}
+                          src={SCHEME_IMAGES[currentSchemeIdx]}
+                          alt={t.oya_schemes_title}
+                          initial={{ opacity: 0, scale: 0.98 }}
+                          animate={{ opacity: 1, scale: 1 }}
+                          exit={{ opacity: 0, scale: 1.02 }}
+                          transition={{ duration: 0.3 }}
+                          className="w-full h-full object-contain"
+                        />
+                      </AnimatePresence>
+                      
+                      <button 
+                        onClick={() => setCurrentSchemeIdx((prev) => (prev > 0 ? prev - 1 : SCHEME_IMAGES.length - 1))}
+                        className="absolute left-4 p-3 rounded-full bg-white/80 hover:bg-white text-neutral-800 shadow-md backdrop-blur-sm transition-all border border-neutral-200 hover:scale-110 opacity-70 group-hover:opacity-100"
+                        title="Previous"
+                      >
+                        <ChevronLeft className="w-6 h-6 text-orange-600" />
+                      </button>
+
+                      <button 
+                        onClick={() => setCurrentSchemeIdx((prev) => (prev < SCHEME_IMAGES.length - 1 ? prev + 1 : 0))}
+                        className="absolute right-4 p-3 rounded-full bg-white/80 hover:bg-white text-neutral-800 shadow-md backdrop-blur-sm transition-all border border-neutral-200 hover:scale-110 opacity-70 group-hover:opacity-100"
+                        title="Next"
+                      >
+                        <ChevronRight className="w-6 h-6 text-orange-600" />
+                      </button>
+                      
+                      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-black/50 text-white backdrop-blur-sm rounded-full px-4 py-1 text-sm font-medium tracking-widest shadow-lg">
+                        {currentSchemeIdx + 1} / {SCHEME_IMAGES.length}
+                      </div>
+                    </div>
+                  </div>
                 )}
                 
                 {infoModal === 'onbilgi' && (
